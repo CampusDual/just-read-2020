@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="USERS"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>USER_ID</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>USER_ID</Column>
+    </UpdateKeys>
+    <GeneratedKey>USER_ID</GeneratedKey>
+    <Queries>
+        <Query id="default">
+            <ValidColumns>
+                <Column>USER_ID</Column>
+                <Column>USERNAME</Column>
+                <Column>USER_EMAIL</Column>
+                <Column>USER_PASSWORD</Column>
+                <Column>USER_FIRST_NAME</Column>
+                <Column>USER_LAST_NAME</Column>
+                <Column>USER_PICTURE</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.users
+                    #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="login">
+            <ValidColumns>
+                <Column>USER_ID</Column>
+                <Column>USERNAME</Column>
+                <Column>USER_EMAIL</Column>
+                <Column>USER_PASSWORD</Column>
+                <Column>USER_FIRST_NAME</Column>
+                <Column>USER_LAST_NAME</Column>
+                <Column>USER_PICTURE</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.users
+                    #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>
