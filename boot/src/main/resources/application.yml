@@ -1,77 +1,122 @@
 endpoints:
-   api:
-      enabled: true
+  api:
+    # Endpoints de Spring Boot activos
+    enabled: true
 logging:
-   level:
-      root: info
+  level:
+    # Nivel de log por defecto del servidor establecido al nivel de INFO
+    root: info
 ontimize:
-   corsfilter:
-      enabled: true
-   globalcors:
-      corsConfigurations:
-         '[/**]':
-            allowedOrigins: "*"
-            allowedHeaders: "*"
-            exposedHeaders: ["X-Auth-Token","Content-disposition","X-Requested-With"]
-            allowedMethods:
-            - GET
-            - POST
-            - PUT
-            - OPTIONS
-            - DELETE
-   jdbc:
-      nameConvention: database
-      sqlhandler: postgres
-      sqlConditionProcessor:
-         uppperString: true
-         upperLike: true
-   security:
-      mode: default
-      roleInformationService:
-         roleRepository: UserRoleDao
-         roleNameColumn: ROLE
-         serverPermissionQueryId: serverPermissions
-         serverPermissionNameColumn: PERMISSION_NAME
-         clientPermissionQueryId: clientPermissions
-         clientPermissionColumn: XMLCLIENTPERMISSION
-      userInformationService:
-         userRepository: UserDao
-         userLoginColumn: USERNAME
-         userPasswordColumn: USER_PASSWORD
-         queryId: login
-         otherData:
-            - USER_FIRST_NAME
-            - USER_LAST_NAME
-            - USER_EMAIL
-            - USER_PICTURE
-            - USER_ROLE_ID
-            - USER_ID
-      userRoleInformationService:
-         userRoleRepository: UserRoleDao
-         queryId: userRole
-         roleLoginColumn: ROLE_ID
-         roleNameColumn: ROLE
+  corsfilter:
+    # Habilitado los filtros de CORS
+    enabled: true
+  globalcors:
+    # Configuración global de CORS
+    corsConfigurations:
+      # Configuración para este punto de entrada :'[/**]'
+      '[/**]':
+        # Permitir diferentes orígenes
+        allowedOrigins: "*"
+        # Permitir cabeceras
+        allowedHeaders: "*"
+        # Cabeceras expuestas
+        exposedHeaders: ["X-Auth-Token","Content-disposition","X-Requested-With"]
+        # Métodos HTTP permitidos
+        allowedMethods:
+          - GET
+          - POST
+          - PUT
+          - OPTIONS
+          - DELETE
+  jdbc:
+    # Convención de nombre de columnas
+    nameConvention: upper
+    # Handler de SQL
+    sqlhandler: oracle
+    sqlConditionProcessor:
+      # Uso de mayúsculas
+      uppperString: true
+      # Comparación de cadenas en caso de condición LIKE en mayúscula
+      upperLike: true
+  security:
+    # Modo de seguridad por defecto
+    mode: default
+    # Configurar las columnas del rol de usuario
+    roleInformationService:
+      # Repositorio que almacenan los roles
+      roleRepository: UserRoleDao
+      # Nombre de la columnas que tiene el nombre del rol
+      roleNameColumn: ROLENAME
+      # Identificador de la query para la consulta de permisos en el servidor
+      serverPermissionQueryId: serverPermissions
+      # Nombre de la columna que contiene el nombre del permiso
+      serverPermissionNameColumn: PERMISSION_NAME
+      # Identificador de la query para la consulta de permisos en el cliente
+      clientPermissionQueryId: clientPermissions
+      # Nombre de la columna que contiene los permisos del cliente
+      clientPermissionColumn: XMLCLIENTPERMISSION
+    # Información sobre el usuario
+    userInformationService:
+      # Repositorio que almacena los usuarios de la aplicación
+      userRepository: UserDao
+      # Nombre de la columna con el nombre de usuario
+      userLoginColumn: USER_
+      # Nombre de la columnas con la contraseña
+      userPasswordColumn: PASSWORD
+      # Indentificador de la query para iniciar sesión
+      queryId: login
+      # Otras columnas de consulta
+      otherData:
+        - NAME
+        - SURNAME
+        - EMAIL
+        - NIF
+        - USERBLOCKED
+        - LASTPASSWORDUPDATE
+        - FIRSTLOGIN
+    #Información sobre el repositorio que enlaza usuarios y roles
+    userRoleInformationService:
+      # Nombre del repositorio
+      userRoleRepository: UserRoleDao
+      # Identificador de la consulta
+      queryId: userRole
+      # Columna que almacena al usuario
+      roleLoginColumn: USER_
+      # Columna que almacena el nombre del rol
+      roleNameColumn: ROLENAME
 server:
-   port: 33333
-   tomcat:
-      uri-encoding: UTF-8
-   compression:
-      enabled: true
-      mime-types: application/json, application/xml
+  # Puerto del servidor
+  port: 33333
+  tomcat:
+    # Codificación de la URI
+    uri-encoding: UTF-8
+  compression:
+    # Habilitar la compresión de datos
+    enabled: true
+    # Tipos mime
+    mime-types: application/json, application/xml
 spring:
-   datasource:
-      driver-class-name: org.postgresql.Driver
-      jdbcUrl: jdbc:postgresql://45.84.210.174:65432/cd06
-      username: cd06
-      password: cd06_P4$$!
-      initialSize: 10
-      testOnBorrow: true
-      dbcp2:
-         login-timeout:
-   main:
-      banner-mode: 'off'
-   session:
-      store-type: none
-   autoconfigure:
-      exclude: |
-         org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration, org.springframework.boot.actuate.autoconfigure.ManagementWebSecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.FallbackWebSecurityAutoConfiguration
+  # Origen de los datos (Conexión con la DB)
+  datasource:
+    # Driver del JDBC
+    driver-class-name: org.postgresql.Driver
+    # URL de conexión
+    jdbcUrl: jdbc:postgresql://45.84.210.174:65432/cd06
+    # Nombre de usuario de la BD
+    username: cd06
+    # Contraseña del usuario de la BD
+    password: cd06_P4$$!
+    # Tamaño inicial
+    initialSize: 10
+    # Validación
+    testOnBorrow: true
+  main:
+    # Eliminar el banner de inicio en la consola
+    banner-mode: 'off'
+  session:
+    # Almacenar la sesión en spring
+    store-type: none
+  autoconfigure:
+    # Elimina los ficheros de autoconfiguración de Spring Boot
+    exclude: |
+      org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration, org.springframework.boot.actuate.autoconfigure.ManagementWebSecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.FallbackWebSecurityAutoConfiguration
