@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SearchResultsRoutingModule } from './search-results-routing.module';
+import {SearchResultsHomeComponent} from './search-results-home/search-results-home.component';
 
 import { OntimizeWebModule } from "ontimize-web-ngx";
 
@@ -11,6 +12,8 @@ import { OntimizeWebModule } from "ontimize-web-ngx";
     SearchResultsRoutingModule,
     OntimizeWebModule
   ],
-  declarations: []
+  declarations: [
+    SearchResultsHomeComponent
+  ]
 })
 export class SearchResultsModule { }
