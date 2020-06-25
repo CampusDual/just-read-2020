@@ -6,7 +6,7 @@
     service="books"
     entity="book"
     title="Books"
-    columns="book_id;book_title;book_isbn;book_description;book_launch_date"
+    columns="book_id;book_title;book_thumbnail;book_isbn;book_description;book_launch_date"
     keys="book_id"
     cols="4"
     query-rows="8"
@@ -23,16 +23,24 @@
   >
     <o-grid-item *ngFor="let book of booksGrid.dataArray">
       <div fxLayout="column" class="customer-item mat-elevation-z1">
-        <div fxLayout="row" fxLayoutAlign="space-between end" class="image-container">
-            <!-- <mat-divider fxFlex></mat-divider>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-between end"
+          class="image-container"
+        >
+          <!-- <mat-divider fxFlex></mat-divider>
             <div class="image">
               <img [src]="getImageSrc(list.PHOTO)">
             </div>
             <mat-divider fxFlex></mat-divider> -->
-          </div>
-          <div fxLayout="column" fxLayoutAlign="start center" class="customer-data">
-            <span class="customer-name">{{ book.book_title }}</span>
-            <!-- <span>{{ list.EMAIL }}</span>
+        </div>
+        <div
+          fxLayout="column"
+          fxLayoutAlign="start center"
+          class="customer-data"
+        >
+          <span class="customer-name">{{ book.book_title }}</span>
+          <!-- <span>{{ list.EMAIL }}</span>
             <span>{{ list.ADDRESS }}</span> -->
         </div>
       </div>
