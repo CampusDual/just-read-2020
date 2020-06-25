@@ -4,71 +4,53 @@
 
 	<parent>
 		<groupId>com.justread</groupId>
-		<artifactId>JustRead</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<artifactId>justread</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<name>Basic project boot</name>
-	<description>Basic project services.</description>
-	<artifactId>JustRead-boot</artifactId>
+	<name>${project.artifactId}</name>
+	<description>${project.artifactId}</description>
+	<artifactId>justread-boot</artifactId>
 	<packaging>jar</packaging>
+
+	<properties>
+		<start-class>com.justread.boot.core.ServerApplication</start-class>
+		<spring-boot.repackage.skip>false</spring-boot.repackage.skip>
+	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.justread</groupId>
-			<artifactId>JustRead-api</artifactId>
+			<artifactId>justread-api</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>com.justread</groupId>
-			<artifactId>JustRead-frontend</artifactId>
+			<artifactId>justread-frontend</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.justread</groupId>
-			<artifactId>JustRead-model</artifactId>
+			<artifactId>justread-model</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.justread</groupId>
-			<artifactId>JustRead-ws</artifactId>
+			<artifactId>justread-ws</artifactId>
 		</dependency>
+
+		<!-- Ontimize Boot -->
+		<dependency>
+			<groupId>com.ontimize.boot</groupId>
+			<artifactId>ontimize-boot-starter-jdbc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ontimize.boot</groupId>
+			<artifactId>ontimize-boot-starter-rest</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
-
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-source-plugin</artifactId>
-				</plugin>
-				<plugin>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-maven-plugin</artifactId>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-dependency-plugin</artifactId>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-						<configuration>
-							<mainClass>com.imatia.basicproject.boot.core.ServerApplication</mainClass>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-
 	</build>
 </project>
