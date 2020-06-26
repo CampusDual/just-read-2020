@@ -22,26 +22,34 @@
     gutter-size="20px"
   >
     <o-grid-item *ngFor="let book of booksGrid.dataArray">
-      <div fxLayout="column" class="customer-item mat-elevation-z1">
-        <div
-          fxLayout="row"
-          fxLayoutAlign="space-between end"
-          class="image-container"
-        >
-          <!-- <mat-divider fxFlex></mat-divider>
-            <div class="image">
-              <img [src]="getImageSrc(list.PHOTO)">
+      <div fxLayout="column" class="mat-elevation-z1">
+        <div class="card" style="width: 18rem;">
+          <div fxLayout="column" class="mat-elevation-z1">
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between end"
+              class="image-container"
+            >
+              <mat-divider fxFlex></mat-divider>
+              <div class="image card-img-top">
+                <img [src]="getImageSrc(book.book_thumbnail)" />
+              </div>
+              <mat-divider fxFlex></mat-divider>
             </div>
-            <mat-divider fxFlex></mat-divider> -->
-        </div>
-        <div
-          fxLayout="column"
-          fxLayoutAlign="start center"
-          class="customer-data"
-        >
-          <span class="customer-name">{{ book.book_title }}</span>
-          <!-- <span>{{ list.EMAIL }}</span>
-            <span>{{ list.ADDRESS }}</span> -->
+            <div
+              fxLayout="column"
+              fxLayoutAlign="start center"
+              class="card-body"
+            >
+              <span class="card-title">{{ book.book_title }}</span>
+            </div>
+            <a
+              href="#"
+              class="btn btn-outline-dark"
+              style="width: 11rem; margin: auto;"
+              >Más información</a
+            >
+          </div>
         </div>
       </div>
     </o-grid-item>
