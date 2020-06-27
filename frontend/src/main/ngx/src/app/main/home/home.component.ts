@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(["../", "login"], { relativeTo: this.actRoute });
   }
 
-  getImageSrc(image) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(image);
+  getImageSrc(image: string) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + image);
   }
 }

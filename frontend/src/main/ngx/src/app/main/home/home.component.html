@@ -22,34 +22,19 @@
     gutter-size="20px"
   >
     <o-grid-item *ngFor="let book of booksGrid.dataArray">
-      <div fxLayout="column" class="mat-elevation-z1">
-        <div class="card" style="width: 18rem;">
-          <div fxLayout="column" class="mat-elevation-z1">
-            <div
-              fxLayout="row"
-              fxLayoutAlign="space-between end"
-              class="image-container"
-            >
-              <mat-divider fxFlex></mat-divider>
-              <div class="image card-img-top">
-                <img [src]="getImageSrc(book.book_thumbnail)" />
-              </div>
-              <mat-divider fxFlex></mat-divider>
-            </div>
-            <div
-              fxLayout="column"
-              fxLayoutAlign="start center"
-              class="card-body"
-            >
-              <span class="card-title">{{ book.book_title }}</span>
-            </div>
-            <a
-              href="#"
-              class="btn btn-outline-dark"
-              style="width: 11rem; margin: auto;"
-              >Más información</a
-            >
-          </div>
+      <div fxLayout="column" class="card bg-light mb-3" style="width: 23rem;">
+        <img
+          class="card-img-top"
+          [src]="getImageSrc(book.book_thumbnail)"
+        />
+        <div fxLayout="column" fxLayoutAlign="start center" class="card-body">
+          <h6 class="card-title">{{ book.book_title }}</h6>
+          <a
+            href="#"
+            class="btn btn-outline-dark"
+            style="width: 11rem; margin: auto;"
+            >Más información</a
+          >
         </div>
       </div>
     </o-grid-item>
