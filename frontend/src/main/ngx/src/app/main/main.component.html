@@ -1,7 +1,7 @@
 <nav
   class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between"
 >
-  <a class="navbar-brand mb-0 h1" href="#">
+  <a class="navbar-brand mb-0 h1" href="/main/home">
     <img
       src="../../assets/images/books-icon.png"
       class="nav-img d-inline-block align-top"
@@ -9,16 +9,25 @@
     JustRead
   </a>
 
-  <div class="collapse navbar-collapse">
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Destacados</a>
+        <a class="nav-link" href="/main/home">Destacados</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Explora</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/main/authors">ExploraAutores</a>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          id="navbarDropdownMenuLink"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          >Explora</a
+        >
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/main/books">Libros</a>
+          <a class="dropdown-item" href="/main/authors">Autores</a>
+        </div>
       </li>
     </ul>
   </div>
@@ -27,5 +36,34 @@
       <a class="nav-link" href="/login">Login</a>
     </li>
   </ul>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown link
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+    </ul>
+  </div>
 </nav>
 <router-outlet></router-outlet>

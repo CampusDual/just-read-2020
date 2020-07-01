@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-books-home',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BooksHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private sanitizer:DomSanitizer
+  ) { }
 
   ngOnInit() {
   }
 
+  getImageSrc(image: string) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + image);
+  }
 }

@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {BooksHomeComponent} from "./books-home/books-home.component";
 import {BooksDetailComponent} from "./books-detail/books-detail.component"
+import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
+import {BooksHomeComponent} from "./books-home/books-home.component";
 
 const routes: Routes = [{
   path: '',
@@ -15,6 +15,6 @@ const routes: Routes = [{
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class BooksRoutingModule { }
+export class BooksRoutingModule {}

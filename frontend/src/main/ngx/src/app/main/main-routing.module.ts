@@ -12,7 +12,6 @@ export function loadHomeModule() {
   return HomeModule;
 }
 
-
 export function loadBooksModule(){
   return BooksModule;
 }
