@@ -42,7 +42,7 @@ ontimize:
     # Modo de seguridad por defecto
     mode: default
     # Ignorar security
-    ignorePaths: /books/**
+    ignorePaths: /books/**, /authors/**
     # Configurar las columnas del rol de usuario
     roleInformationService:
       # Repositorio que almacenan los roles
