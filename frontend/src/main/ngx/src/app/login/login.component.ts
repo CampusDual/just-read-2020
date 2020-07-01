@@ -17,9 +17,8 @@ export class LoginComponent implements OnInit {
   user: FormControl;
   password: FormControl;
   sessionExpired = false;
-  username: string;
+  username: any;
  
-
   router: Router;
 
   constructor(
@@ -44,6 +43,8 @@ export class LoginComponent implements OnInit {
         }
       }
     });
+
+    this.username = data.getUsername();
 
   }
 

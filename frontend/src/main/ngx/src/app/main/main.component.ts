@@ -8,9 +8,11 @@ import { DataServiceService } from 'app/data-service.service';
 })
 export class MainComponent implements OnInit {
 
-  username: string;
+  username: any;
 
-  constructor(private data: DataServiceService) { }
+  constructor(private data: DataServiceService) {
+    this.username = data.getUsername();
+   }
 
   ngOnInit() {
     this.data.currentMessage.subscribe(message => this.username = message)

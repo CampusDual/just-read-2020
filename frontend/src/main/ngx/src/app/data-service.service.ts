@@ -5,7 +5,6 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class DataServiceService {
-
   private messageSource = new BehaviorSubject('');
   currentMessage = this.messageSource.asObservable();
 
@@ -13,5 +12,10 @@ export class DataServiceService {
 
   changeMessage(message: string) {
     this.messageSource.next(message)
+  }
+
+  // to use always the same message in other components
+  getUsername(){
+    return this.currentMessage;
   }
 }
