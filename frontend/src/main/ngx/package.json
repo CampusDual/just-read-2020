@@ -34,7 +34,7 @@
     "ngx-spinner": "^7.2.0",
     "ontimize-web-ngx": "4.0.7",
     "ontimize-web-ngx-theming": "4.0.2",
-    "popper.js": "^1.16.0",
+    "popper.js": "^1.16.1",
     "reflect-metadata": "0.1.12",
     "rxjs": "6.3.3",
     "zone.js": "0.8.26"
