@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, NgZone, Injector } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { DataServiceService } from "../data-service.service";
 
 import { LoginService, NavigationService, APP_CONFIG, Config } from 'ontimize-web-ngx';
 
@@ -16,6 +17,8 @@ export class LoginComponent implements OnInit {
   user: FormControl;
   password: FormControl;
   sessionExpired = false;
+  username: string;
+ 
 
   router: Router;
 
@@ -25,7 +28,8 @@ export class LoginComponent implements OnInit {
     router: Router,
     @Inject(NavigationService) public navigation: NavigationService,
     @Inject(LoginService) private loginService: LoginService,
-    public injector: Injector) {
+    public injector: Injector,
+    private data: DataServiceService) {
 
     this.router = router;
 
@@ -57,6 +61,13 @@ export class LoginComponent implements OnInit {
     if (this.loginService.isLoggedIn()) {
       this.router.navigate(['../'], { relativeTo: this.actRoute });
     }
+
+    this.data.currentMessage.subscribe(message => this.username = message)
+
+  }
+
+  newUsername(){
+    this.data.changeMessage(this.username)
   }
 
   login() {

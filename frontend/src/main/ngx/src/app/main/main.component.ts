@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { DataServiceService } from 'app/data-service.service';
 
 @Component({
   selector: 'app-main',
@@ -7,9 +8,16 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  username: string;
+
+  constructor(private data: DataServiceService) { }
 
   ngOnInit() {
+    this.data.currentMessage.subscribe(message => this.username = message)
+  }
+
+  newUsername(){
+    this.data.changeMessage(this.username)
   }
 
 }

@@ -33,7 +33,10 @@
   </div>
   <ul class="navbar-nav justify-content-end">
     <li class="nav-item">
-      <a class="nav-link" href="/login">Login</a>
+      <a *ngIf="username != '';else noUsername" class="nav-link" href="/login">{{username}}</a>
+      <ng-template #noUsername>
+       <a class="nav-link" href="/login">Login</a>
+      </ng-template>
     </li>
   </ul>
 </nav>

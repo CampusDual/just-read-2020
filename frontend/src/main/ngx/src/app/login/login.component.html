@@ -10,14 +10,14 @@
       <p class="session-expired" *ngIf="sessionExpired">{{ 'ERROR_SESSION_EXPIRED' | oTranslate }}</p>
 
       <mat-form-field style="width:100%;">
-        <input matInput class="mat-input" #user placeholder="{{ 'USERNAME' | oTranslate }}" id="username" formControlName="username">
+        <input matInput class="mat-input" #user placeholder="{{ 'USERNAME' | oTranslate }}" id="username" formControlName="username" [(ngModel)] = "username">
       </mat-form-field>
 
       <mat-form-field style="width:100%;">
         <input matInput class="mat-input" #password placeholder="{{ 'PASSWORD' | oTranslate }}" id="password" type="password" formControlName="password">
       </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit">{{ 'LOGIN' | oTranslate }}</button>
+      <button mat-raised-button color="primary" type="submit" (click)="newUsername()" >{{ 'LOGIN' | oTranslate }}</button>
       <div layout-padding></div>
       <div layout-padding></div>
       <div fxLayout="column" fxLayoutAlign="center center" layout-padding>
