@@ -32,13 +32,23 @@
     </ul>
   </div>
   <ul class="navbar-nav justify-content-end">
-    <li class="nav-item">
+    <li class="nav-item dropleft">
       <a
         *ngIf="username != ''; else noUsername"
-        class="nav-link"
-        routerLink="/login"
+        class="nav-link dropdown-toggle"
+        role="button"
+        id="navbarDropdownProfileLink"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
         >{{ username }}</a
       >
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownProfileLink">
+        <a class="dropdown-item" routerLink="/main/user/profile">Mi perfil</a>
+        <a class="dropdown-item" routerLink="/main/user/lists">Mis listas</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" routerLink="">Desconectar</a>
+      </div>
       <ng-template #noUsername>
         <a class="nav-link" routerLink="/login">Login</a>
       </ng-template>

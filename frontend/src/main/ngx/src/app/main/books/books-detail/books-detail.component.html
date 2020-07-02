@@ -1,37 +1,15 @@
-<div fxFlex>
-  <o-grid
-    fxFlex
-    #booksGrid
-    attr="booksGrid"
-    service="books"
-    entity="book"
-    title="Books"
-    columns="book_id;book_title;book_thumbnail;book_isbn;book_description;book_launch_date"
-    keys="book_id"
-    cols="4"
-    query-rows="8"
-    show-page-size="false"
-    page-size-options="4;8;16"
-    orderable="true"
-    quick-filter="true"
-    sortable-columns="book_title;book_launch_date"
-    sort-column=""
-    controls="true"
-    refresh-button="false"
-    pagination-controls="true"
-    gutter-size="20px"
-  >
-
-
-
-   <!-- <o-grid-item *ngFor="let book of booksGrid.dataArray">
-      <div fxLayout="column" class="card bg-light mb-3" style="width: 23rem;">
-        <img class="card-img-top" [src]="book.book_thumbnail" />
-        <div fxLayout="column" fxLayoutAlign="start center" class="card-body">
-          <h6 class="card-title">{{ book.book_title }}</h6>
-          <h4 class="author">{{</h4>
-        </div>
-      </div>
-    </o-grid-item>-->
-  </o-grid>
+<div class="" *ngFor="let book of bookResponse.data">
+  <div class="card mb-3 text-center">
+    <div class="card-header">    </div>
+    <div class="card-body text-center">
+      <img class="card-img-top" [src]="getImageSrc(book.book_thumbnail)" />
+      <h5 class="card-title">{{ book.book_title }}</h5>
+      <p class="card-text">
+        {{ book.book_description }}
+      </p>
+    </div>
+    <div class="card-footer text-center">
+      <small class="text-muted">ISBN: {{ book.book_isbn }}</small>
+    </div>
+  </div>
 </div>

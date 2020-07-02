@@ -14,5 +14,14 @@
   "ERROR_USER_REQUIRED": "Nombre de usuario incorrecto.",
   "ERROR_PASS_REQUIRED": "Contraseña incorrecta.",
   "ERROR_USER_PASS_INCORRECT": "Usuario o contraseña incorrecta.",
-  "BOOKS": "Libros"
+  "Books": "Libros",
+  "book_title": "Título",
+  "book_launch_date": "Fecha de lanzamiento",
+  "book_id": "ID",
+  "book_thumbnail": "Portada",
+  "book_description": "Descripción",
+  "book_isbn": "ISBN",
+  "AUTHORS": "Autores",
+  "author_first_name": "Nombre",
+  "author_last_name": "Apellidos"
 }

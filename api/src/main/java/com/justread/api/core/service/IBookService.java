@@ -9,8 +9,12 @@ import java.util.Map;
 public interface IBookService {
 
     public EntityResult bookQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
+
     public EntityResult bookInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;
+
     public EntityResult bookUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
+
     public EntityResult bookDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
+    public EntityResult bookAuthorsQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 }

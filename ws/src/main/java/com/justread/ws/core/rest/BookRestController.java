@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("books")
-@ComponentScan(basePackageClasses = { com.justread.api.core.service.IBookService.class })
+@ComponentScan(basePackageClasses = {com.justread.api.core.service.IBookService.class})
 public class BookRestController extends ORestController<IBookService> {
 
     @Autowired

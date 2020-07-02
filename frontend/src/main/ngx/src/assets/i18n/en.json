@@ -14,5 +14,14 @@
   "ERROR_USER_REQUIRED": "Incorrect username.",
   "ERROR_PASS_REQUIRED": "Incorrect password.",
   "ERROR_USER_PASS_INCORRECT": "Invalid username or password.",
-  "BOOKS": "Books"
+  "Books": "Books",
+  "book_title": "Title",
+  "book_launch_date": "Launch date",
+  "book_id": "ID",
+  "book_thumbnail": "Thumbnail",
+  "book_description": "Description",
+  "book_isbn": "ISBN",
+  "AUTHORS": "Authors",
+  "author_first_name": "First name",
+  "author_last_name": "Last name"
 }
