@@ -12,4 +12,23 @@
         <Column>book_id</Column>
     </UpdateKeys>
     <GeneratedKey>book_id</GeneratedKey>
+    <Queries>
+        <Query id="bookAuthors">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="book_id" prefix="b"/>
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                      #COLUMNS#
+                    FROM
+                      ${mainschema}.books AS b
+                      LEFT JOIN ${mainschema}.authors_books AS ab ON b.book_id = ab.book_id
+                      LEFT JOIN ${mainschema}.authors AS a ON a.author_id = ab.author_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
 </JdbcEntitySetup>

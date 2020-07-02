@@ -36,4 +36,5 @@ local.properties
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
+## Node modules
 node_modules/

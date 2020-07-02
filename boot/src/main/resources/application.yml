@@ -41,6 +41,8 @@ ontimize:
   security:
     # Modo de seguridad por defecto
     mode: default
+    # Ignorar security
+    ignorePaths: /books/**, /authors/**
     # Configurar las columnas del rol de usuario
     roleInformationService:
       # Repositorio que almacenan los roles
@@ -106,7 +108,7 @@ spring:
     username: cd06
     # Contraseña del usuario de la BD
     password: cd06_P4$$!
-    # Tamaño inicial
+    # Tamaño iniciald
     initialSize: 10
     # Validación
     testOnBorrow: true

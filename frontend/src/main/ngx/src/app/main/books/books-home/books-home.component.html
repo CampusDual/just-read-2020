@@ -1,0 +1,42 @@
+<div fxFlex>
+  <o-grid
+    fxFlex
+    #booksGrid
+    attr="booksGrid"
+    service="books"
+    entity="book"
+    title="Books"
+    columns="book_id;book_title;book_thumbnail;book_isbn;book_description;book_launch_date"
+    keys="book_id"
+    cols="4"
+    query-rows="8"
+    show-page-size="false"
+    page-size-options="4;8;16"
+    orderable="true"
+    quick-filter="true"
+    sortable-columns="book_title;book_launch_date"
+    sort-column="book_title"
+    controls="true"
+    refresh-button="true"
+    pagination-controls="true"
+    gutter-size="20px"
+  >
+    <o-grid-item *ngFor="let book of booksGrid.dataArray">
+      <div fxLayout="column" class="card bg-light mb-3" style="width: 23rem;">
+        <img class="card-img-top" [src]="getImageSrc(book.book_thumbnail)" />
+        <div fxLayout="column" fxLayoutAlign="start center" class="card-body">
+          <h6 class="card-title">{{ book.book_title }}</h6>
+          <a
+            routerLink="/main/books/{{book.book_id}}"
+            class="btn btn-outline-dark"
+            style="width: 11rem; margin: auto;"
+          >
+            Más información
+          </a>
+        </div>
+      </div>
+    </o-grid-item>
+  </o-grid>
+</div>
+
+    

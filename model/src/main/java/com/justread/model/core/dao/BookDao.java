@@ -16,5 +16,5 @@ public class BookDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_ISBN = "book_isbn";
     public static final String ATTR_DESCRIPTION = "book_description";
     public static final String ATTR_LAUNCH_DATE = "book_launch_date";
-
+    public static final String AUTHORS = "bookAuthors";
 }

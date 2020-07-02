@@ -4,40 +4,20 @@
 
     <parent>
         <groupId>com.justread</groupId>
-        <artifactId>JustRead</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <artifactId>justread</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <name>Basic project api</name>
-    <description>Basic project api code.</description>
-    <artifactId>JustRead-api</artifactId>
+    <name>${project.artifactId}</name>
+    <description>${project.artifactId}</description>
+    <artifactId>justread-api</artifactId>
     <packaging>jar</packaging>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-    </properties>
 
     <dependencies>
         <dependency>
-            <groupId>com.ontimize.boot</groupId>
-            <artifactId>ontimize-boot-starter-jdbc</artifactId>
+            <groupId>com.ontimize.jee</groupId>
+            <artifactId>ontimize-jee-common</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <finalName>${project.artifactId}</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

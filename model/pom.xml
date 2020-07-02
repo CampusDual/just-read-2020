@@ -3,12 +3,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.justread</groupId>
-		<artifactId>JustRead</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<artifactId>justread</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>JustRead-model</artifactId>
-	<name>Basic project model</name>
-	<description>Basic project models</description>
+	<artifactId>justread-model</artifactId>
+	<name>${project.artifactId}</name>
+	<description>${project.artifactId}</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -18,34 +18,25 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.justread</groupId>
+			<artifactId>justread-api</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.justread</groupId>
-			<artifactId>JustRead-api</artifactId>
-		</dependency>
 
 		<dependency>
-			<groupId>com.justread</groupId>
-			<artifactId>JustRead-frontend</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.ontimize.boot</groupId>
-			<artifactId>ontimize-boot-starter-jdbc</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.ontimize.boot</groupId>
-			<artifactId>ontimize-boot-starter-rest</artifactId>
+			<groupId>com.ontimize.jee</groupId>
+			<artifactId>ontimize-jee-server-jdbc</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 		</dependency>
-
+		
 	</dependencies>
 
 	<build>

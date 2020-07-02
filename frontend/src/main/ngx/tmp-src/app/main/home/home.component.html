@@ -1,0 +1,41 @@
+<div fxFlex>
+  <o-grid
+    fxFlex
+    #booksGrid
+    attr="booksGrid"
+    service="books"
+    entity="book"
+    title="Books"
+    columns="book_id;book_thumbnail;book_title;book_isbn;book_description;book_launch_date"
+    keys="book_id"
+    [cols]="4"
+    query-rows="32"
+    show-page-size="false"
+    page-size-options="4;8;16"
+    orderable="true"
+    quick-filter="true"
+    grid-item-height="1:3"
+    sortable-columns="book_title;book_launch_date"
+    sort-column=""
+    controls="true"
+    refresh-button="false"
+    pagination-controls="true"
+    gutter-size="20px"
+  >
+    <o-grid-item *ngFor="let book of booksGrid.dataArray">
+      <o-column layout-padding class="container-item">
+        <img [src]="book.thumbnail" style="margin-top: 8px;" />
+        <h4>{{ book.title }}</h4>
+        <div class="phone">
+          <mat-icon>book</mat-icon> <span> {{ book.isbn }} </span>
+        </div>
+        <div class="email">
+          <mat-icon>calendar</mat-icon> <span> {{ book.launch_date }} </span>
+        </div>
+        <div class="body">
+          {{ book.description }}
+        </div>
+      </o-column>
+    </o-grid-item>
+  </o-grid>
+</div>
