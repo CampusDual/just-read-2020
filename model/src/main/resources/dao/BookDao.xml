@@ -14,6 +14,9 @@
     <GeneratedKey>book_id</GeneratedKey>
     <Queries>
         <Query id="bookAuthors">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="book_id" prefix="b"/>
+            </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
                     SELECT

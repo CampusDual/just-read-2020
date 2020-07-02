@@ -1,9 +1,12 @@
 <div class="" *ngFor="let book of bookResponse.data">
   <div class="card mb-3 text-center">
-    <div class="card-header">    </div>
+    <div class="card-header"></div>
     <div class="card-body text-center">
       <img class="card-img-top" [src]="getImageSrc(book.book_thumbnail)" />
       <h5 class="card-title">{{ book.book_title }}</h5>
+      <p class="card-text" *ngFor="let authors of authorsResponse.data">
+        Autor: <span style="font-style: italic;">{{ authors.author_first_name }} {{ authors.author_last_name }} </span>
+      </p>
       <p class="card-text">
         {{ book.book_description }}
       </p>
