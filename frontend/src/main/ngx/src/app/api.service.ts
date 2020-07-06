@@ -7,7 +7,12 @@ import {
 import { throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 
-import { BookResponse, BooksAuthorsResponse } from "./model/book";
+import {
+  BookResponse,
+  BooksAuthorsResponse,
+  BookReviewsResponse,
+  BookGenresResponse,
+} from "./model/book";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -56,6 +61,49 @@ export class ApiService {
     return this.http
       .post<BooksAuthorsResponse>(
         this.API_SERVER + "/books/bookAuthors/search",
+        body
+      )
+      .pipe(catchError((error) => this.handleError(error)));
+  }
+
+  getBookGenres(id: number) {
+    const body = {
+      filter: {
+        book_id: id,
+      },
+      columns: ["g.genre_name"],
+      sqltypes: {},
+    };
+
+    return this.http
+      .post<BookGenresResponse>(
+        this.API_SERVER + "/books/bookGenres/search",
+        body
+      )
+      .pipe(catchError((error) => this.handleError(error)));
+  }
+
+  getBooksReviews(id: number) {
+    const body = {
+      filter: {
+        book_id: id,
+      },
+      columns: [
+        "r.review_text",
+        "r.is_spoiler",
+        "r.review_last_update",
+        "r.review_create_date",
+        "r.review_text",
+        "r.review_score",
+        "u.user_",
+        "u.picture",
+      ],
+      sqltypes: {},
+    };
+
+    return this.http
+      .post<BookReviewsResponse>(
+        this.API_SERVER + "/books/bookReviews/search",
         body
       )
       .pipe(catchError((error) => this.handleError(error)));

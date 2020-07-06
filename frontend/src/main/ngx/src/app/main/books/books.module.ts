@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { OntimizeWebModule } from "ontimize-web-ngx";
 import { BooksRoutingModule } from './books-routing.module';
 import {BooksHomeComponent} from './books-home/books-home.component';
-import {BooksDetailComponent } from './books-detail/books-detail.component'
+import {BooksDetailComponent } from './books-detail/books-detail.component';
+import { BookRatingComponent } from './book-rating/book-rating.component'
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import {BooksDetailComponent } from './books-detail/books-detail.component'
   ],
   declarations: [
     BooksHomeComponent,
-    BooksDetailComponent
+    BooksDetailComponent,
+    BookRatingComponent
   ]
 })
 export class BooksModule { }

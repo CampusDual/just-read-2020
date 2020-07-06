@@ -4,7 +4,12 @@ import { Subscription } from "rxjs";
 import { ApiService } from "app/api.service";
 import { DomSanitizer } from "@angular/platform-browser";
 
-import { BookResponse, BooksAuthorsResponse } from "app/model/book";
+import {
+  BookResponse,
+  BooksAuthorsResponse,
+  BookReviewsResponse,
+  BookGenresResponse,
+} from "app/model/book";
 
 @Component({
   selector: "app-books-detail",
@@ -15,6 +20,10 @@ export class BooksDetailComponent implements OnInit {
   bookId: number;
   bookResponse: BookResponse;
   authorsResponse: BooksAuthorsResponse;
+  bookReviews: BookReviewsResponse;
+  bookGenres: BookGenresResponse;
+  score: number;
+  count: number;
 
   private routeSub: Subscription;
 
@@ -41,7 +50,28 @@ export class BooksDetailComponent implements OnInit {
       this.api.getBookAuthors(this.bookId).subscribe((data) => {
         this.authorsResponse = data;
       });
+      this.api.getBooksReviews(this.bookId).subscribe((data) => {
+        this.bookReviews = data;
+        this.getScoreAvgReviews();
+      });
+      this.api.getBookGenres(this.bookId).subscribe((data) => {
+        this.bookGenres = data;
+      });
     });
+  }
+
+  getScoreAvgReviews() {
+    this.count = 0;
+    this.score = 0;
+    this.bookReviews.data.forEach((rate) => {
+      this.score += rate.review_score;
+      this.count++;
+    });
+    return this.score / this.count;
+  }
+
+  isNaN(value: number) {
+    return Number.isNaN(value);
   }
 
   getImageSrc(image: string) {

@@ -34,3 +34,41 @@ export class BooksAuthorsResponse {
     author_last_name: number;
   };
 }
+
+export class BookReviewsResponse {
+  code: number;
+  message: string;
+  data: [
+    {
+      review_text: string;
+      review_last_update: Date;
+      is_spoiler: boolean;
+      user_picture: string;
+      review_create_date: Date;
+      review_score: number;
+      username: string;
+    }
+  ];
+  sqlTypes: {
+    review_text: number;
+    review_last_update: number;
+    is_spoiler: number;
+    user_picture: number;
+    review_create_date: number;
+    review_score: number;
+    username: number;
+  };
+}
+
+export class BookGenresResponse {
+  code: number;
+  message: string;
+  data: [
+    {
+      genre_name: string;
+    }
+  ];
+  sqlTypes: {
+    genre_name: number;
+  };
+}
