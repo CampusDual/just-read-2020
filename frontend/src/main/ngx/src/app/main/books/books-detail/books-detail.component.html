@@ -22,7 +22,7 @@
               <p class="text-muted">
                 <small
                   >{{ count }} valoraciones - Media:
-                  {{ getScoreAvgReviews() }}</small
+                  {{ getScoreAvgReviews() | number: "1.2-2" }}</small
                 >
               </p>
             </div>
@@ -57,36 +57,52 @@
       >
     </div>
     <div *ngFor="let reviews of bookReviews.data">
-      <div *ngIf="!reviews.username" class="card mx-auto m-3 w-50">
+      <div *ngIf="!reviews.user_" class="card mx-auto m-3 w-50">
         <div class="card-body">
           <p class="m-1">
             Este libro aun no tiene ninguna reseña, se el primero en hacerla!
           </p>
         </div>
       </div>
-      <div *ngIf="reviews.username" class="card mx-auto my-3 w-75">
+      <div *ngIf="reviews.user_" class="card mx-auto my-3 w-75">
         <div class="card-header">
           <app-book-rating
             class="text-right"
             [rating]="reviews.review_score"
           ></app-book-rating>
         </div>
-        <div class="card-body">
-          <div class="float-left">
-            <img
-              class="rounded-circle my-2"
-              id="avatar"
-              [src]="getImageSrc(reviews.user_picture)"
-            />
-            <h5 class="mx-3">{{ reviews.username }}</h5>
+        <div class="card-body container-fluid m-0">
+          <div class="row">
+            <div class="m-auto col-md-auto d-block">
+              <img
+                class="rounded-circle my-2"
+                id="avatar"
+                [src]="getImageSrc(reviews.picture)"
+              />
+              <h5 class="mx-3">{{ reviews.user_ }}</h5>
+            </div>
+            <div class="col">
+              <p class="px-6 py-2">{{ reviews.review_text }}</p>
+            </div>
           </div>
-          <p class="px-6 py-2">{{ reviews.review_text }}</p>
         </div>
         <div class="card-footer text-center">
-          <small class="text-muted"
-            >Fecha:
-            {{ reviews.review_last_update | date: "hh:mm dd/MM/yyyy" }}</small
-          >
+          <div *ngIf="reviews.review_last_update; else createDate">
+            <small class="text-muted"
+              >Fecha:
+              {{
+                reviews.review_last_update | date: "hh:mm - dd/MM/yyyy"
+              }}</small
+            >
+          </div>
+          <ng-template #createDate>
+            <small class="text-muted"
+              >Fecha:
+              {{
+                reviews.review_create_date | date: "hh:mm - dd/MM/yyyy"
+              }}</small
+            >
+          </ng-template>
         </div>
       </div>
     </div>

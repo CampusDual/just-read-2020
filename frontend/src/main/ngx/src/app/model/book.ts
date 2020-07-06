@@ -43,20 +43,20 @@ export class BookReviewsResponse {
       review_text: string;
       review_last_update: Date;
       is_spoiler: boolean;
-      user_picture: string;
+      picture: string;
       review_create_date: Date;
       review_score: number;
-      username: string;
+      user_: string;
     }
   ];
   sqlTypes: {
     review_text: number;
     review_last_update: number;
     is_spoiler: number;
-    user_picture: number;
+    picture: number;
     review_create_date: number;
     review_score: number;
-    username: number;
+    user_: number;
   };
 }
 
