@@ -23,7 +23,7 @@
   >
     <o-grid-item *ngFor="let book of booksGrid.dataArray">
       <div fxLayout="column" class="card bg-light mb-3" style="width: 23rem;">
-        <img class="card-img-top" [src]="getImageSrc(book.book_thumbnail)" />
+        <img id="thumbnail" class="rounded" [src]="getImageSrc(book.book_thumbnail)" />
         <div fxLayout="column" fxLayoutAlign="start center" class="card-body">
           <h6 class="card-title">{{ book.book_title }}</h6>
           <a
