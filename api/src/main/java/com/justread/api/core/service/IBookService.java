@@ -17,4 +17,8 @@ public interface IBookService {
     public EntityResult bookDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
     public EntityResult bookAuthorsQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
+
+    public EntityResult bookReviewsQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
+
+    public EntityResult bookGenresQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 }

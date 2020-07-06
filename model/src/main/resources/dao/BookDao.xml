@@ -30,5 +30,39 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="bookReviews">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="book_id" prefix="b"/>
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                      #COLUMNS#
+                    FROM
+                      ${mainschema}.books AS b
+                      LEFT JOIN ${mainschema}.reviews AS r ON b.book_id = r.book_id
+                      LEFT JOIN ${mainschema}.tuser AS u ON r.user_ = u.user_
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="bookGenres">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="book_id" prefix="b"/>
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                      #COLUMNS#
+                    FROM
+                      ${mainschema}.books AS b
+                      LEFT JOIN ${mainschema}.book_genres AS bg ON b.book_id = bg.book_id
+                      LEFT JOIN ${mainschema}.genres AS g ON g.genre_id = bg.genre_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>
