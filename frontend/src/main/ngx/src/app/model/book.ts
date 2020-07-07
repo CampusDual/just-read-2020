@@ -1,4 +1,4 @@
-export class BookResponse {
+export interface BookResponse {
   code: number;
   message: string;
   data: [
@@ -20,7 +20,7 @@ export class BookResponse {
   };
 }
 
-export class BooksAuthorsResponse {
+export interface BooksAuthorsResponse {
   code: number;
   message: string;
   data: [
@@ -35,7 +35,7 @@ export class BooksAuthorsResponse {
   };
 }
 
-export class BookReviewsResponse {
+export interface BookReviewsResponse {
   code: number;
   message: string;
   data: [
@@ -60,7 +60,7 @@ export class BookReviewsResponse {
   };
 }
 
-export class BookGenresResponse {
+export interface BookGenresResponse {
   code: number;
   message: string;
   data: [

@@ -44,10 +44,10 @@
         >{{ username }}</a
       >
       <div class="dropdown-menu" aria-labelledby="navbarDropdownProfileLink">
-        <a class="dropdown-item" routerLink="/main/user/profile">Mi perfil</a>
-        <a class="dropdown-item" routerLink="/main/user/lists">Mis listas</a>
+        <a class="dropdown-item" href="/main/user/profile">Mi perfil</a>
+        <a class="dropdown-item" href="/main/user/lists">Mis listas</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" routerLink="">Desconectar</a>
+        <a class="dropdown-item" type="button" (click)="closeSession()">Desconectar</a>
       </div>
       <ng-template #noUsername>
         <a class="nav-link" routerLink="/login">Login</a>

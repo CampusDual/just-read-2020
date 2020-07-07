@@ -14,9 +14,12 @@ import {
   BookGenresResponse,
 } from "./model/book";
 
+import { UserResponse } from "./model/user";
+
 const httpOptions = {
   headers: new HttpHeaders({
     "Content-Type": "application/json",
+    Authorization: "Basic " + localStorage.getItem("token"),
   }),
 };
 
@@ -106,6 +109,12 @@ export class ApiService {
         this.API_SERVER + "/books/bookReviews/search",
         body
       )
+      .pipe(catchError((error) => this.handleError(error)));
+  }
+
+  getUserData() {
+    return this.http
+      .get<UserResponse>(this.API_SERVER + "/users/username", httpOptions)
       .pipe(catchError((error) => this.handleError(error)));
   }
 

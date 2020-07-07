@@ -16,11 +16,7 @@ import { AppRoutingModule } from "./app-routing.module";
 export const customProviders: any = [];
 
 @NgModule({
-  imports: [
-    ONTIMIZE_MODULES,
-    OntimizeWebModule,
-    AppRoutingModule,
-  ],
+  imports: [ONTIMIZE_MODULES, OntimizeWebModule, AppRoutingModule],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
   providers: [
