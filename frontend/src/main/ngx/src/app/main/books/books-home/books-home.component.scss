@@ -1,5 +1,7 @@
-img {
-    width: 65%;
+#thumbnail {
+    width: 250px !important;
+    height: 330px !important;
     margin: auto;
     padding-top: 3%;
+    object-fit: cover;
   }

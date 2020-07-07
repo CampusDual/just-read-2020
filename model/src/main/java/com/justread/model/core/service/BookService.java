@@ -45,4 +45,14 @@ public class BookService implements IBookService {
     public EntityResult bookAuthorsQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.bookDao, keyMap, attrList, BookDao.AUTHORS);
     }
+
+    @Override
+    public EntityResult bookReviewsQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.bookDao, keyMap, attrList, BookDao.REVIEWS);
+    }
+
+    @Override
+    public EntityResult bookGenresQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.bookDao, keyMap, attrList, bookDao.GENRES);
+    }
 }
