@@ -6,7 +6,11 @@
     float: none;
 }
 
-.col-md-8{
-    border-left: solid 1px;
-}
+img{
+    float: left;
+    width:  375px;
+    height: 375px;
+    object-fit: cover;
+    margin-left: 40px;
+  }
 
