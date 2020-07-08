@@ -12,6 +12,11 @@ import { UserResponse } from "app/model/user";
 export class UserProfileComponent implements OnInit {
   userData: UserResponse;
 
+  inputCurrentPassword: String;
+  inputNewPassword: String;
+
+  userPassword: any;
+
   constructor(private api: ApiService, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
@@ -29,4 +34,14 @@ export class UserProfileComponent implements OnInit {
       "data:image/jpg;base64," + image
     );
   }
+
+
+  updatePassword(){
+
+    
+
+  }
+
+
+
 }

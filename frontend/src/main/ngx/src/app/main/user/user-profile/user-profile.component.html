@@ -5,11 +5,18 @@
   <div class="row no-gutters">
     <div class="col-md-4">
       <img
+        *ngIf="userData.principal.otherData.PICTURE != null; else noPicture"
         class="card-img rounded-circle"
         [src]="getImageSrc(userData.principal.otherData.PICTURE)"
-      />  
-    
-    </div>
+      />
+      <ng-template #noPicture>
+        <img
+          class="card-img rounded-circle"
+          src="../../../assets/images/user_profile.png"
+        />  
+      </ng-template>
+
+   </div>
     <div class="col-md-8">
       <div class="card-body text-center">
         <h5 class="card-title text-center">Nombre</h5>
@@ -56,20 +63,20 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text">Contraseña actual</span>
                         </div>
-                        <input type="text" aria-label="First name" class="form-control">
+                        <input type="text" aria-label="First name" class="form-control" [ngModel]="inputCurrentPassword">
                       </div>
                       <br>
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text">Nueva Contraseña</span>
                         </div>
-                        <input type="text" aria-label="First name" class="form-control">
+                        <input type="text" aria-label="First name" class="form-control" [ngModel]="inputNewPassword">
                       </div>
                       
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: rgb(255, 73, 73);">Cerrar</button>
-                      <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                      <button type="button" class="btn btn-primary" (click)="updatePassword()">Guardar Cambios</button>
                     </div>
                   </div>
                 </div>
