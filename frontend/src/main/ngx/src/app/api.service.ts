@@ -50,6 +50,26 @@ export class ApiService {
     return this.http
       .post<BookResponse>(this.API_SERVER + "/books/book/search", body)
       .pipe(catchError((error) => this.handleError(error)));
+  } 
+  
+  getBooks() {
+    const body = {
+      filter: {
+      },
+      columns: [
+        "book_id",
+        "book_title",
+        "book_isbn",
+        "book_description",
+        "book_launch_date",
+        "book_thumbnail",
+      ],
+      sqltypes: {},
+    };
+
+    return this.http
+      .post<BookResponse>(this.API_SERVER + "/books/book/search", body)
+      .pipe(catchError((error) => this.handleError(error)));
   }
 
   getBookAuthors(id: number) {

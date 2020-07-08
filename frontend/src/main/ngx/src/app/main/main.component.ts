@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, Inject } from "@angular/core";
 import { DataServiceService } from "app/data-service.service";
-import { LoginService } from 'ontimize-web-ngx';
+import { LoginService } from "ontimize-web-ngx";
 
 @Component({
   selector: "app-main",
@@ -27,5 +27,6 @@ export class MainComponent implements OnInit {
 
   closeSession() {
     this.loginService.logoutWithConfirmationAndRedirect();
+    localStorage.clear();
   }
 }
