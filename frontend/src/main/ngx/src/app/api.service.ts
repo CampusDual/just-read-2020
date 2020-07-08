@@ -18,8 +18,7 @@ import { UserResponse } from "./model/user";
 
 const httpOptions = {
   headers: new HttpHeaders({
-    "Content-Type": "application/json",
-    Authorization: "Basic " + localStorage.getItem("token"),
+    "Content-Type": "application/json"
   }),
 };
 
@@ -133,8 +132,15 @@ export class ApiService {
   }
 
   getUserData() {
+    const header = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization: "Basic " + localStorage.getItem("token"),
+      }),
+    };
+
     return this.http
-      .get<UserResponse>(this.API_SERVER + "/users/username", httpOptions)
+      .get<UserResponse>(this.API_SERVER + "/users/username", header)
       .pipe(catchError((error) => this.handleError(error)));
   }
 

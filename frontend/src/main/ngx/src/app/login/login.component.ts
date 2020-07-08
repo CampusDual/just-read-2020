@@ -87,7 +87,6 @@ export class LoginComponent implements OnInit {
       }, this.handleError);
       localStorage.clear()
       localStorage.setItem("token", btoa(userName + ":" + password));
-      localStorage.setItem("username", userName);
     }
   }
 
