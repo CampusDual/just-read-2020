@@ -78,7 +78,15 @@
                 class="rounded-circle my-2"
                 id="avatar"
                 [src]="getImageSrc(reviews.picture)"
+                *ngIf="reviews.picture; else noPicture"
               />
+              <ng-template #noPicture>
+                <img
+                  class="rounded-circle my-2"
+                  id="avatar"
+                  src="../../../assets/images/user_profile.png"
+                />
+              </ng-template>
               <h5 class="mx-3">{{ reviews.user_ }}</h5>
             </div>
             <div class="col">

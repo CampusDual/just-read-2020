@@ -1,7 +1,7 @@
 <div class="card mb-3 text_center">
-  <h2 class="card-header" style="text-align: center;">
-    {{ userData.principal.username }}
-  </h2>
+  <div class="card-header" >
+   <h2 style="text-align: center;">{{ userData.principal.username }}</h2>
+  </div>
   <div class="row no-gutters">
     <div class="col-md-4">
       <img
@@ -13,10 +13,20 @@
         <img
           class="card-img rounded-circle"
           src="../../../assets/images/user_profile.png"
-        />  
+        />
       </ng-template>
 
-   </div>
+      <span class="btn1">
+        <a
+          class="btn btn-outline-dark"
+          style="width: 6rem; margin: auto; margin-left: 3px; margin-bottom: 3px;"
+          data-toggle="modal" data-target="#picture Modal"
+        >
+          Cambiar
+        </a>
+      </span>
+    </div>
+   
     <div class="col-md-8">
       <div class="card-body text-center">
         <h5 class="card-title text-center">Nombre</h5>
@@ -37,105 +47,168 @@
         <br />
         <div class="container">
           <div class="row">
-            <div class="col-sm">
-              <span class="btn1">
-                <a
-                  class="btn btn-outline-dark"
-                  style="width: 11rem; margin: auto;"
-                  data-toggle="modal" data-target="#passwordModal"
-                >
-                  Cambiar Contraseña
-                </a>
-              </span>
-
-              <div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="passwordModalLabel" aria-hidden="true">
+            <div class="col-sm btn btn-outline-dark">
+              <a
+                style="width: 11rem; margin: auto;"
+                data-toggle="modal"
+                data-target="#passwordModal"
+              >
+                Cambiar Contraseña
+              </a>
+              <div
+                class="modal fade"
+                id="passwordModal"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="passwordModalLabel"
+                aria-hidden="true"
+              >
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="passwordModalLabel">Cambiar Contraseña</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <h5 class="modal-title" id="passwordModalLabel">
+                        Cambiar Contraseña
+                      </h5>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                      >
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <div class="modal-body">
-
                       <div class="input-group">
                         <div class="input-group-prepend">
-                          <span class="input-group-text">Contraseña actual</span>
+                          <span class="input-group-text"
+                            >Contraseña actual</span
+                          >
                         </div>
-                        <input type="text" aria-label="First name" class="form-control" [ngModel]="inputCurrentPassword">
+                        <input
+                          type="text"
+                          aria-label="First name"
+                          class="form-control"
+                          [ngModel]="inputCurrentPassword"
+                        />
                       </div>
-                      <br>
+                      <br />
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text">Nueva Contraseña</span>
                         </div>
-                        <input type="text" aria-label="First name" class="form-control" [ngModel]="inputNewPassword">
+                        <input
+                          type="text"
+                          aria-label="First name"
+                          class="form-control"
+                          [ngModel]="inputNewPassword"
+                        />
                       </div>
-                      
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: rgb(255, 73, 73);">Cerrar</button>
-                      <button type="button" class="btn btn-primary" (click)="updatePassword()">Guardar Cambios</button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                        style="background-color: rgb(255, 73, 73);"
+                      >
+                        Cerrar
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        (click)="updatePassword()"
+                      >
+                        Guardar Cambios
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
-            <div class="col-sm">
-              <span class="btn2">
-                <a
-                  class="btn btn-outline-dark"
-                  style="width: 11rem; margin: auto;"
-                  data-toggle="modal" data-target="#editModal"
-                >
-                  Editar Datos
-                </a>
-              </span>
+            <div class="col-sm btn btn-outline-dark">
+              <a
+                class="btn btn-outline-dark"
+                style="width: 11rem; margin: auto;"
+                data-toggle="modal"
+                data-target="#editModal"
+              >
+                Editar Datos
+              </a>
 
-              <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+              <div
+                class="modal fade"
+                id="editModal"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="editModalLabel"
+                aria-hidden="true"
+              >
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="editModalLabel">Editar datos</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <h5 class="modal-title" id="editModalLabel">
+                        Editar datos
+                      </h5>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                      >
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <div class="modal-body">
-                      
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text">Nombre</span>
                         </div>
-                        <input type="text" aria-label="First name" class="form-control">
+                        <input
+                          type="text"
+                          aria-label="First name"
+                          class="form-control"
+                        />
                       </div>
-                      <br>
+                      <br />
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text">Apellidos</span>
                         </div>
-                        <input type="text" aria-label="First name" class="form-control">
+                        <input
+                          type="text"
+                          aria-label="First name"
+                          class="form-control"
+                        />
                       </div>
-                      <br>
+                      <br />
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text">Email</span>
                         </div>
-                        <input type="text" aria-label="First name" class="form-control">
+                        <input
+                          type="text"
+                          aria-label="First name"
+                          class="form-control"
+                        />
                       </div>
-                      
-
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: rgb(255, 73, 73);">Cerrar</button>
-                      <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                        style="background-color: rgb(255, 73, 73);"
+                      >
+                        Cerrar
+                      </button>
+                      <button type="button" class="btn btn-primary">
+                        Guardar Cambios
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>

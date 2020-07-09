@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 
-import { ApiService } from "app/api.service";
+import { UserService } from "app/services/user.service";
 import { DomSanitizer } from "@angular/platform-browser";
 import { UserResponse } from "app/model/user";
 
@@ -17,7 +17,7 @@ export class UserProfileComponent implements OnInit {
 
   userPassword: any;
 
-  constructor(private api: ApiService, private sanitizer: DomSanitizer) {}
+  constructor(private api: UserService, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     this.loadData();
@@ -35,10 +35,7 @@ export class UserProfileComponent implements OnInit {
     );
   }
 
-
   updatePassword(){
-
-    
 
   }
 

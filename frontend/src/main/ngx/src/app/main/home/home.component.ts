@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { ApiService } from "app/api.service";
+import { BookService } from "app/services/book.service";
+import { AuthorService } from "app/services/author.service";
+import { GenreService } from "app/services/genre.service";
 import { BookResponse } from "app/model/book";
 import { DomSanitizer } from "@angular/platform-browser";
 import { Authors, AuthorBooks } from "app/model/author";
@@ -26,7 +28,9 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private actRoute: ActivatedRoute,
-    private api: ApiService,
+    private apiAuthor: AuthorService,
+    private apiBook: BookService,
+    private apiGenre: GenreService,
     private sanitizer: DomSanitizer
   ) {}
 
@@ -41,42 +45,42 @@ export class HomeComponent implements OnInit {
   }
 
   getGenres() {
-    this.api.getGenres().subscribe((data) => {
+    this.apiGenre.getGenres().subscribe((data) => {
       this.genres = data;
       let id = this.getRandomInt(this.genres.data.length);
-      this.api.getGenreBooks(id).subscribe((data) => {
+      this.apiGenre.getGenreBooks(id).subscribe((data) => {
         this.genreBooks = data;
       });
-      this.api.getGenreById(id).subscribe((data) => {
+      this.apiGenre.getGenreById(id).subscribe((data) => {
         this.genres = data;
       });
     });
   }
 
   getAuthor() {
-    this.api.getAuthors().subscribe((data) => {
+    this.apiAuthor.getAuthors().subscribe((data) => {
       this.authors = data;
       let id = this.getRandomInt(this.authors.data.length);
-      this.api.getAuthorBooks(id).subscribe((data) => {
+      this.apiAuthor.getAuthorBooks(id).subscribe((data) => {
         this.authorBooks = data;
       });
-      this.api.getAuthorById(id).subscribe((data) => {
+      this.apiAuthor.getAuthorById(id).subscribe((data) => {
         this.authors = data;
       });
     });
   }
 
   getBooks() {
-    this.api.getBooks().subscribe((data) => {
+    this.apiBook.getBooks().subscribe((data) => {
       this.books = data;
       let index = this.fillWithRandomIndexArray(this.books.data.length);
-      this.api.getBookById(index[0]).subscribe((data) => {
+      this.apiBook.getBookById(index[0]).subscribe((data) => {
         this.firstBook = data;
       });
-      this.api.getBookById(index[1]).subscribe((data) => {
+      this.apiBook.getBookById(index[1]).subscribe((data) => {
         this.secondBook = data;
       });
-      this.api.getBookById(index[2]).subscribe((data) => {
+      this.apiBook.getBookById(index[2]).subscribe((data) => {
         this.thirdBook = data;
       });
     });

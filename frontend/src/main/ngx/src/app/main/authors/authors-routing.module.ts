@@ -8,7 +8,7 @@ const routes: Routes = [{
   component: AuthorsExploreComponent
 },
 {
-  path: ":AUTHORID",
+  path: ":author_id",
   component: AuthorsDetailComponent
 }];
 
