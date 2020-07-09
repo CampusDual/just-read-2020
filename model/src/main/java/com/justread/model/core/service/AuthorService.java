@@ -40,4 +40,9 @@ public class AuthorService implements IAuthorService {
     public EntityResult authorDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.delete(this.authorDao, keyMap);
     }
+
+    @Override
+    public EntityResult booksQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.authorDao, keyMap, attrList, authorDao.BOOKS);
+    }
 }

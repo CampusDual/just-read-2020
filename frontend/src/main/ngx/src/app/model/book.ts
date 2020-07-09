@@ -1,8 +1,9 @@
-export class BookResponse {
+export interface BookResponse {
   code: number;
   message: string;
   data: [
     {
+      book_id: number;
       book_isbn: string;
       book_description: string;
       book_thumbnail: string;
@@ -20,7 +21,7 @@ export class BookResponse {
   };
 }
 
-export class BooksAuthorsResponse {
+export interface BooksAuthorsResponse {
   code: number;
   message: string;
   data: [
@@ -35,7 +36,7 @@ export class BooksAuthorsResponse {
   };
 }
 
-export class BookReviewsResponse {
+export interface BookReviewsResponse {
   code: number;
   message: string;
   data: [
@@ -60,7 +61,7 @@ export class BookReviewsResponse {
   };
 }
 
-export class BookGenresResponse {
+export interface BookGenresResponse {
   code: number;
   message: string;
   data: [

@@ -1,5 +1,8 @@
-<div fxFlex>
+<br>
+<h2 style="text-align: center;">Authors</h2>
+<div>
   <o-table
+    class="table table-striped"
     fxFlex
     attr="authorsTable"
     service="authors"
@@ -8,8 +11,11 @@
     columns="author_id;author_first_name;author_last_name"
     visible-columns="author_first_name;author_last_name"
     query-rows="20"
+    delete-button="false"
+    insert-button="false"
+    title="Authors"
   >
-    <o-table-column
+    <th
       attr="PHOTO"
       title="PHOTO"
       orderable="no"
@@ -18,13 +24,13 @@
       avatar="yes"
       empty-image="assets/images/no-image.png"
       image-type="base64"
-    ></o-table-column>
-    <o-table-column
+    ></th>
+    <th
       attr="STARTDATE"
       title="STARTDATE"
       type="date"
       format="LL"
-    ></o-table-column>
-    <o-table-column attr="ID" title="ID" width="100px"></o-table-column>
+    ></th>
+    <th attr="ID" title="ID" width="100px"></th>
   </o-table>
 </div>

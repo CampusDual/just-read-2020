@@ -1,1 +1,29 @@
+.thumbnail {
+  width: 378px !important;
+  height: 500px !important;
+  margin: auto;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.section-thumbnail {
+  width: 114px !important;
+  height: 150px !important;
+  margin: auto;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.section-text {
+  width: 130px !important;
+}
+
+.bgcarousel {
+    background-color: rgba(14, 13, 13, 0.267);
+    width: 650px;
+}
+.carousel-text {
+    background-color: rgba(14, 13, 13, 0.87);
+    border-radius: 3px;
+    color: white;
+}
 

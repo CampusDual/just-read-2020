@@ -42,7 +42,7 @@ ontimize:
     # Modo de seguridad por defecto
     mode: default
     # Ignorar security
-    ignorePaths: /books/**, /authors/**
+    ignorePaths: /books/**, /authors/**, /genres/**
     # Configurar las columnas del rol de usuario
     roleInformationService:
       # Repositorio que almacenan los roles
@@ -71,11 +71,8 @@ ontimize:
       otherData:
         - NAME
         - SURNAME
+        - PICTURE
         - EMAIL
-        - NIF
-        - USERBLOCKED
-        - LASTPASSWORDUPDATE
-        - FIRSTLOGIN
     #Información sobre el repositorio que enlaza usuarios y roles
     userRoleInformationService:
       # Nombre del repositorio

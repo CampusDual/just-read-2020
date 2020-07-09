@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
     this.loginForm.addControl('password', pwdCtrl);
 
     if (this.loginService.isLoggedIn()) {
+      this.data.currentMessage.subscribe(message => this.username = message)
       this.router.navigate(['../'], { relativeTo: this.actRoute });
     }
 
@@ -84,6 +85,8 @@ export class LoginComponent implements OnInit {
         self.sessionExpired = false;
         self.router.navigate(['../'], { relativeTo: this.actRoute });
       }, this.handleError);
+      localStorage.clear()
+      localStorage.setItem("token", btoa(userName + ":" + password));
     }
   }
 

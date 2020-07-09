@@ -3,28 +3,28 @@
         xmlns="http://www.ontimize.com/schema/jdbc"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
-        catalog="" schema="${mainschema}" table="authors"
+        catalog="" schema="${mainschema}" table="genres"
         datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
     <DeleteKeys>
-        <Column>author_id</Column>
+        <Column>genre_id</Column>
     </DeleteKeys>
     <UpdateKeys>
-        <Column>author_id</Column>
+        <Column>genre_id</Column>
     </UpdateKeys>
-    <GeneratedKey>author_id</GeneratedKey>
+    <GeneratedKey>genre_id</GeneratedKey>
     <Queries>
         <Query id="books">
             <AmbiguousColumns>
-                <AmbiguousColumn name="author_id" prefix="a"/>
+                <AmbiguousColumn name="genre_id" prefix="g"/>
             </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
                     SELECT
                       #COLUMNS#
                     FROM
-                      ${mainschema}.authors AS a
-                      LEFT JOIN ${mainschema}.authors_books AS ab ON a.author_id = ab.author_id
-                      LEFT JOIN ${mainschema}.books AS b ON ab.book_id = b.book_id
+                      ${mainschema}.genres AS g
+                      LEFT JOIN ${mainschema}.book_genres AS bg ON g.genre_id = bg.genre_id
+                      LEFT JOIN ${mainschema}.books AS b ON b.book_id = bg.book_id
                     #WHERE#
                     #ORDER#
                 ]]>
