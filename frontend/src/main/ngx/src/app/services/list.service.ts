@@ -6,13 +6,13 @@ import {
 } from "@angular/common/http";
 import { throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
-import { UserResponse } from "../model/user";
+import { ListResponse } from "../model/list";
 
 @Injectable({
   providedIn: "root",
 })
-export class UserService {
-  private API = "http://localhost:33333/users/";
+export class ListService {
+  private API = "http://localhost:33333/lists/";
 
   constructor(private http: HttpClient) {}
 
@@ -25,7 +25,7 @@ export class UserService {
     };
 
     return this.http
-      .get<UserResponse>(this.API + "username", header)
+      .get<ListResponse>(this.API + "user/search", header)
       .pipe(catchError((error) => this.handleError(error)));
   }
 

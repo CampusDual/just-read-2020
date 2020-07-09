@@ -1,7 +1,11 @@
-.thumbnail {
+.section-thumbnail {
   width: 114px !important;
   height: 150px !important;
   margin: auto;
   object-fit: cover;
   border-radius: 6px;
+}
+
+.section-text {
+  width: 130px !important;
 }
