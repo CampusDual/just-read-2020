@@ -3,6 +3,7 @@ export interface BookResponse {
   message: string;
   data: [
     {
+      book_id: number;
       book_isbn: string;
       book_description: string;
       book_thumbnail: string;

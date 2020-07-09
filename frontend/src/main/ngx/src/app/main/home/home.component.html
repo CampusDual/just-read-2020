@@ -1,52 +1,53 @@
-<div class="container-fluid">
-  <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+<div class="container-fluid mt-4 mb-5">
+  <div
+    id="carouselIndicators"
+    class="carousel slide bgcarousel m-auto rounded"
+    data-ride="carousel"
+  >
     <ol class="carousel-indicators">
       <li
         data-target="#carouselIndicators"
         data-slide-to="0"
         class="active"
-        style="background-color: red;"
       ></li>
-      <li
-        data-target="#carouselIndicators"
-        data-slide-to="1"
-        style="background-color: red;"
-      ></li>
-      <li
-        data-target="#carouselIndicators"
-        data-slide-to="2"
-        style="background-color: red;"
-      ></li>
+      <li data-target="#carouselIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img
-          class="d-block w-25"
-          [src]="getImageSrc(books.data[indexArray[0]].book_thumbnail)"
+          type="button"
+          class="d-block thumbnail my-1"
+          [src]="getImageSrc(firstBook.data[0].book_thumbnail)"
           alt="First slide"
+          routerLink="/main/books/{{ firstBook.data[0].book_id }}"
         />
-        <div class="carousel-caption">
-          <h4>{{ books.data[indexArray[0]].book_title }}</h4>
+        <div class="carousel-caption d-none d-md-block carousel-text">
+          <h5>{{ firstBook.data[0].book_title }}</h5>
         </div>
       </div>
       <div class="carousel-item">
         <img
-          class="d-block w-25"
-          [src]="getImageSrc(books.data[indexArray[1]].book_thumbnail)"
+          type="button"
+          class="d-block thumbnail my-1"
+          [src]="getImageSrc(secondBook.data[0].book_thumbnail)"
           alt="Second slide"
+          routerLink="/main/books/{{ secondBook.data[0].book_id }}"
         />
-        <div class="carousel-caption">
-          <h4>{{ books.data[indexArray[1]].book_title }}</h4>
+        <div class="carousel-caption d-none d-md-block carousel-text">
+          <h5>{{ secondBook.data[0].book_title }}</h5>
         </div>
       </div>
       <div class="carousel-item">
         <img
-          class="d-block w-25"
-          [src]="getImageSrc(books.data[indexArray[2]].book_thumbnail)"
+          type="button"
+          class="d-block thumbnail my-1"
+          [src]="getImageSrc(thirdBook.data[0].book_thumbnail)"
           alt="Third slide"
+          routerLink="/main/books/{{ thirdBook.data[0].book_id }}"
         />
-        <div class="carousel-caption">
-          <h4>{{ books.data[indexArray[2]].book_title }}</h4>
+        <div class="carousel-caption d-none d-md-block carousel-text">
+          <h5>{{ thirdBook.data[0].book_title }}</h5>
         </div>
       </div>
     </div>
@@ -72,16 +73,43 @@
 </div>
 <div class="container-fluid">
   <div class="row">
-    <div class="col">
+    <div class="col" *ngFor="let author of authors.data">
       <div class="card">
-        <div class="card-header"></div>
-        <div class="card-body"></div>
+        <div class="card-header">
+          <h5 class="card-title">
+            Más libros de
+            <span class="font-italic"
+              >{{ author.author_first_name }}
+              {{ author.author_last_name }}</span
+            >
+          </h5>
+        </div>
+        <div class="card-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div
+                class="col-md-auto card m-2"
+                *ngFor="let book of authorBooks.data"
+              >
+                <img
+                  class="card-img-top mt-2 section-thumbnail"
+                  [src]="getImageSrc(book.book_thumbnail)"
+                />
+                <div class="card-body">
+                  <div class="card-text section-text text-center">{{ book.book_title }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="card-footer"></div>
       </div>
     </div>
     <div class="col">
       <div class="card">
-        <div class="card-header"></div>
+        <div class="card-header">
+          <h5 class="card-title">Más libros sobre</h5>
+        </div>
         <div class="card-body"></div>
         <div class="card-footer"></div>
       </div>

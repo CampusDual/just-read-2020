@@ -14,11 +14,13 @@ import {
   BookGenresResponse,
 } from "./model/book";
 
+import { AuthorBooks, Authors } from "./model/author";
+
 import { UserResponse } from "./model/user";
 
 const httpOptions = {
   headers: new HttpHeaders({
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
   }),
 };
 
@@ -49,12 +51,11 @@ export class ApiService {
     return this.http
       .post<BookResponse>(this.API_SERVER + "/books/book/search", body)
       .pipe(catchError((error) => this.handleError(error)));
-  } 
-  
+  }
+
   getBooks() {
     const body = {
-      filter: {
-      },
+      filter: {},
       columns: [
         "book_id",
         "book_title",
@@ -141,6 +142,46 @@ export class ApiService {
 
     return this.http
       .get<UserResponse>(this.API_SERVER + "/users/username", header)
+      .pipe(catchError((error) => this.handleError(error)));
+  }
+
+  getAuthorBooks(id: number) {
+    const body = {
+      filter: {
+        author_id: id,
+      },
+      columns: ["b.book_title", "b.book_thumbnail", "b.book_id"],
+      sqltypes: {},
+    };
+
+    return this.http
+      .post<AuthorBooks>(this.API_SERVER + "/authors/books/search", body)
+      .pipe(catchError((error) => this.handleError(error)));
+  }
+
+  getAuthors() {
+    const body = {
+      filter: {},
+      columns: ["author_first_name", "author_last_name", "author_id"],
+      sqltypes: {},
+    };
+
+    return this.http
+      .post<Authors>(this.API_SERVER + "/authors/author/search", body)
+      .pipe(catchError((error) => this.handleError(error)));
+  }
+
+  getAuthorById(id: number) {
+    const body = {
+      filter: {
+        author_id: id,
+      },
+      columns: ["author_first_name", "author_last_name", "author_id"],
+      sqltypes: {},
+    };
+
+    return this.http
+      .post<Authors>(this.API_SERVER + "/authors/author/search", body)
       .pipe(catchError((error) => this.handleError(error)));
   }
 

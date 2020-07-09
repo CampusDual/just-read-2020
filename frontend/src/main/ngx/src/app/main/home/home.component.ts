@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { ApiService } from "app/api.service";
 import { BookResponse } from "app/model/book";
 import { DomSanitizer } from "@angular/platform-browser";
+import { Authors, AuthorBooks } from "app/model/author";
 
 @Component({
   selector: "home",
@@ -11,7 +12,12 @@ import { DomSanitizer } from "@angular/platform-browser";
 })
 export class HomeComponent implements OnInit {
   books: BookResponse;
-  indexArray = [];
+  firstBook: BookResponse;
+  secondBook: BookResponse;
+  thirdBook: BookResponse;
+
+  authors: Authors;
+  authorBooks: AuthorBooks;
 
   constructor(
     private router: Router,
@@ -21,6 +27,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getAuthor();
     this.getBooks();
   }
 
@@ -28,33 +35,56 @@ export class HomeComponent implements OnInit {
     this.router.navigate(["../", "login"], { relativeTo: this.actRoute });
   }
 
-  getBooks() {
-    this.api.getBooks().subscribe((data) => {
-      this.books = data;
-      this.fillWithRandomIndexArray();
-      console.log(this.indexArray)
+  getAuthor() {
+    this.api.getAuthors().subscribe((data) => {
+      this.authors = data;
+      let id = this.getRandomInt(this.authors.data.length);
+      this.api.getAuthorBooks(id).subscribe((data) => {
+        this.authorBooks = data;
+      });
+      this.api.getAuthorById(id).subscribe((data) => {
+        this.authors = data;
+      });
     });
   }
 
-  fillWithRandomIndexArray() {
+  getBooks() {
+    this.api.getBooks().subscribe((data) => {
+      this.books = data;
+      let index = this.fillWithRandomIndexArray(this.books.data.length);
+      this.api.getBookById(index[0]).subscribe((data) => {
+        this.firstBook = data;
+      });
+      this.api.getBookById(index[1]).subscribe((data) => {
+        this.secondBook = data;
+      });
+      this.api.getBookById(index[2]).subscribe((data) => {
+        this.thirdBook = data;
+      });
+    });
+  }
+
+  fillWithRandomIndexArray(items: number) {
+    let indexArray = [];
     while (true) {
       let exists = false;
-      let index = this.getRandomInt(this.books.data.length);
-      if (this.indexArray == undefined || this.indexArray.length == 0) {
-        this.indexArray.push(index);
+      let index = this.getRandomInt(items);
+      if (indexArray == undefined || indexArray.length == 0) {
+        indexArray.push(index);
       }
-      for (let i = 0; i < this.indexArray.length; i++) {
-        if (index == this.indexArray[i]) {
+      for (let i = 0; i < indexArray.length; i++) {
+        if (index == indexArray[i]) {
           exists = true;
         }
       }
       if (!exists) {
-        this.indexArray.push(index);
+        indexArray.push(index);
       }
-      if (this.indexArray.length == 3) {
+      if (indexArray.length == 3) {
         break;
       }
     }
+    return indexArray;
   }
 
   getRandomInt(max: number) {
