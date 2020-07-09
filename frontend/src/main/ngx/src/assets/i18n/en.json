@@ -22,6 +22,7 @@
   "book_description": "Description",
   "book_isbn": "ISBN",
   "AUTHORS": "Authors",
+  "Authors": "Authors",
   "author_first_name": "First name",
   "author_last_name": "Last name"
 }

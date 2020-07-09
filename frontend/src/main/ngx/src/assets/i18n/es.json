@@ -22,6 +22,7 @@
   "book_description": "Descripción",
   "book_isbn": "ISBN",
   "AUTHORS": "Autores",
+  "Authors": "Autores",
   "author_first_name": "Nombre",
   "author_last_name": "Apellidos"
 }

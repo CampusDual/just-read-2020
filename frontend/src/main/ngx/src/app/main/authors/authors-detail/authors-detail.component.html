@@ -1,3 +1,24 @@
-<p>
-poner formulario con el detalle de un autor
-</p>
+<div class="card mx-auto my-4 w-75 text-center" *ngFor="let a of author.data">
+  <div class="card-header">
+    <h5 class="card-title">
+      {{ a.author_first_name }} {{ a.author_last_name }}
+    </h5>
+  </div>
+  <div class="card-body">
+    <div class="card container-fluid" *ngFor="let b of books.data">
+      <div class="row">
+        <div class="col">
+          <img
+            [src]="getImageSrc(b.book_thumbnail)"
+            style="width: 8rem;"
+            class="rounded"
+          />
+          <div class="col">
+            <h5 class="card-title">{{ b.book_title }}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer"></div>
+</div>
