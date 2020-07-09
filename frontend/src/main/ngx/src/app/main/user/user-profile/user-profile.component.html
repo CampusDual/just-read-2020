@@ -1,7 +1,7 @@
 <div class="card mb-3 text_center">
-  <h2 class="card-header" style="text-align: center;">
-    {{ userData.principal.username }}
-  </h2>
+  <div class="card-header" >
+   <h2 style="text-align: center;">{{ userData.principal.username }}</h2>
+  </div>
   <div class="row no-gutters">
     <div class="col-md-4">
       <img
@@ -16,7 +16,17 @@
         />  
       </ng-template>
 
-   </div>
+      <span class="btn1">
+        <a
+          class="btn btn-outline-dark"
+          style="width: 6rem; margin: auto; margin-left: 3px; margin-bottom: 3px;"
+          data-toggle="modal" data-target="#picture Modal"
+        >
+          Cambiar
+        </a>
+      </span>
+    </div>
+   
     <div class="col-md-8">
       <div class="card-body text-center">
         <h5 class="card-title text-center">Nombre</h5>
