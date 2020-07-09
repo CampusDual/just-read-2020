@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="genres"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>genre_id</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>genre_id</Column>
+    </UpdateKeys>
+    <GeneratedKey>genre_id</GeneratedKey>
+    <Queries>
+        <Query id="books">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="genre_id" prefix="g"/>
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                      #COLUMNS#
+                    FROM
+                      ${mainschema}.genres AS g
+                      LEFT JOIN ${mainschema}.book_genres AS bg ON g.genre_id = bg.genre_id
+                      LEFT JOIN ${mainschema}.books AS b ON b.book_id = bg.book_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>

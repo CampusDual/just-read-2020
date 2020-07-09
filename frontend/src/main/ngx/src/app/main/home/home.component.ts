@@ -4,6 +4,7 @@ import { ApiService } from "app/api.service";
 import { BookResponse } from "app/model/book";
 import { DomSanitizer } from "@angular/platform-browser";
 import { Authors, AuthorBooks } from "app/model/author";
+import { Genres, GenreBooks } from "app/model/genre";
 
 @Component({
   selector: "home",
@@ -19,6 +20,9 @@ export class HomeComponent implements OnInit {
   authors: Authors;
   authorBooks: AuthorBooks;
 
+  genres: Genres;
+  genreBooks: GenreBooks;
+
   constructor(
     private router: Router,
     private actRoute: ActivatedRoute,
@@ -29,10 +33,24 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.getAuthor();
     this.getBooks();
+    this.getGenres();
   }
 
   navigate() {
     this.router.navigate(["../", "login"], { relativeTo: this.actRoute });
+  }
+
+  getGenres() {
+    this.api.getGenres().subscribe((data) => {
+      this.genres = data;
+      let id = this.getRandomInt(this.genres.data.length);
+      this.api.getGenreBooks(id).subscribe((data) => {
+        this.genreBooks = data;
+      });
+      this.api.getGenreById(id).subscribe((data) => {
+        this.genres = data;
+      });
+    });
   }
 
   getAuthor() {

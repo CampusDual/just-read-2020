@@ -16,6 +16,8 @@ import {
 
 import { AuthorBooks, Authors } from "./model/author";
 
+import { Genres, GenreBooks } from "./model/genre";
+
 import { UserResponse } from "./model/user";
 
 const httpOptions = {
@@ -159,6 +161,20 @@ export class ApiService {
       .pipe(catchError((error) => this.handleError(error)));
   }
 
+  getGenreBooks(id: number) {
+    const body = {
+      filter: {
+        genre_id: id,
+      },
+      columns: ["b.book_title", "b.book_thumbnail", "b.book_id"],
+      sqltypes: {},
+    };
+
+    return this.http
+      .post<AuthorBooks>(this.API_SERVER + "/genres/books/search", body)
+      .pipe(catchError((error) => this.handleError(error)));
+  }
+
   getAuthors() {
     const body = {
       filter: {},
@@ -168,6 +184,18 @@ export class ApiService {
 
     return this.http
       .post<Authors>(this.API_SERVER + "/authors/author/search", body)
+      .pipe(catchError((error) => this.handleError(error)));
+  }
+
+  getGenres() {
+    const body = {
+      filter: {},
+      columns: ["genre_name", "genre_id"],
+      sqltypes: {},
+    };
+
+    return this.http
+      .post<Genres>(this.API_SERVER + "/genres/genre/search", body)
       .pipe(catchError((error) => this.handleError(error)));
   }
 
@@ -182,6 +210,20 @@ export class ApiService {
 
     return this.http
       .post<Authors>(this.API_SERVER + "/authors/author/search", body)
+      .pipe(catchError((error) => this.handleError(error)));
+  }
+
+  getGenreById(id: number) {
+    const body = {
+      filter: {
+        genre_id: id,
+      },
+      columns: ["genre_id", "genre_name"],
+      sqltypes: {},
+    };
+
+    return this.http
+      .post<Genres>(this.API_SERVER + "/genres/genre/search", body)
       .pipe(catchError((error) => this.handleError(error)));
   }
 

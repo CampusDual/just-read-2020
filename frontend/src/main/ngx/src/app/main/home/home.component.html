@@ -88,7 +88,8 @@
           <div class="container-fluid">
             <div class="row">
               <div
-                class="col-md-auto card m-2"
+                class="col-md-auto card m-2 btn btn-outline-dark"
+                routerLink="/main/books/{{ book.book_id }}"
                 *ngFor="let book of authorBooks.data"
               >
                 <img
@@ -96,7 +97,9 @@
                   [src]="getImageSrc(book.book_thumbnail)"
                 />
                 <div class="card-body">
-                  <div class="card-text section-text text-center">{{ book.book_title }}</div>
+                  <div class="card-text section-text text-center">
+                    {{ book.book_title }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -105,12 +108,35 @@
         <div class="card-footer"></div>
       </div>
     </div>
-    <div class="col">
+    <div class="col" *ngFor="let genre of genres.data">
       <div class="card">
         <div class="card-header">
-          <h5 class="card-title">Más libros sobre</h5>
+          <h5 class="card-title">
+            Más libros sobre
+            <span class="font-italic">{{ genre.genre_name }}</span>
+          </h5>
         </div>
-        <div class="card-body"></div>
+        <div class="card-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div
+                class="col-md-auto card m-2 btn btn-outline-dark"
+                routerLink="/main/books/{{ book.book_id }}"
+                *ngFor="let book of genreBooks.data"
+              >
+                <img
+                  class="card-img-top mt-2 section-thumbnail"
+                  [src]="getImageSrc(book.book_thumbnail)"
+                />
+                <div class="card-body">
+                  <div class="card-text section-text text-center">
+                    {{ book.book_title }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="card-footer"></div>
       </div>
     </div>
