@@ -1,0 +1,18 @@
+<h2 class="text-center mt-2">Géneros</h2>
+<div>
+  <o-table
+    class="table table-striped"
+    fxFlex
+    attr="genresTable"
+    service="genres"
+    entity="genre"
+    keys="genre_id"
+    columns="genre_id;genre_name"
+    visible-columns="genre_name"
+    query-rows="20"
+    delete-button="false"
+    insert-button="false"
+    title="Genres"
+  >
+  </o-table>
+</div>
