@@ -77,7 +77,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="!lists.data === undefined" class="card mx-auto m-3 w-50">
+    <div *ngIf="lists.data.length == 0" class="card mx-auto m-3 w-50">
       <div class="card-body">
         <p class="m-1">
           ¿Aun no tienes ninguna lista?
