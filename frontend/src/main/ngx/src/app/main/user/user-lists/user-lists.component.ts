@@ -47,7 +47,10 @@ export class UserListsComponent implements OnInit {
 
   createList() {
     if (this.validInput()) {
-      this.toastrService.success("Lista creada correctamente.", "Éxito");
+      this.listService.newList(this.list).subscribe((data) => {
+        this.ngOnInit();
+        this.toastrService.success("Lista creada correctamente.", "Éxito");
+      });
     } else {
       this.toastrService.error(
         "Recuerda, es obligatorio ponerle un nombre a la lista.",

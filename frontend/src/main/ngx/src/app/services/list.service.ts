@@ -6,7 +6,7 @@ import {
 } from "@angular/common/http";
 import { throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
-import { ListResponse } from "../model/list";
+import { ListResponse, List } from "../model/list";
 import { OUserInfoService } from "ontimize-web-ngx";
 
 @Injectable({
@@ -64,15 +64,31 @@ export class ListService {
       .pipe(catchError((error) => this.handleError(error)));
   }
 
-  newList(name: string, description: string) {
+  newList(list: List) {
     const header = {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
         Authorization: "Basic " + localStorage.getItem("token"),
       }),
     };
+    const body = {
+      data: {
+        list_name: list.name,
+        list_description: list.description,
+        user_: this.userInfo.getUserInfo().username,
+        list_create_date: list.createDate,
+      },
+      sqltypes: {
+        list_name: 12,
+        list_description: 12,
+        user_: 12,
+        list_create_date: 91,
+      },
+    };
 
-    const body = {};
+    return this.http
+      .post(this.API + "list", body, header)
+      .pipe(catchError((error) => this.handleError(error)));
   }
 
   handleError(error: HttpErrorResponse) {
