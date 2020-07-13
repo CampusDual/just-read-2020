@@ -26,11 +26,13 @@ export interface BooksAuthorsResponse {
   message: string;
   data: [
     {
+      author_id: number;
       author_first_name: string;
       author_last_name: string;
     }
   ];
   sqlTypes: {
+    author_id: number;
     author_first_name: number;
     author_last_name: number;
   };
@@ -66,10 +68,12 @@ export interface BookGenresResponse {
   message: string;
   data: [
     {
+      genre_id: number;
       genre_name: string;
     }
   ];
   sqlTypes: {
+    genre_id: number;
     genre_name: number;
   };
 }

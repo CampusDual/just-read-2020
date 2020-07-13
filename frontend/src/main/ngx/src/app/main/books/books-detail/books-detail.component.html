@@ -32,17 +32,19 @@
           <h5 class="card-title">{{ book.book_title }}</h5>
           <p class="card-text">
             Autor:
-            <span
+            <a
               *ngFor="let authors of authorsResponse.data"
               style="font-style: italic;"
+              routerLink="/main/authors/{{authors.author_id}}"             
               >{{ authors.author_first_name }} {{ authors.author_last_name }}
-            </span>
+            </a>
             <br />Género:
-            <span
+            <a
               *ngFor="let genre of bookGenres.data"
-              style="font-style: italic;"
+              style="font-style: italic;" 
+              routerLink="/main/genres/{{genre.genre_id}}"
               >{{ genre.genre_name }}
-            </span>
+            </a>
           </p>
           <p class="card-text" id="description">
             {{ book.book_description }}
