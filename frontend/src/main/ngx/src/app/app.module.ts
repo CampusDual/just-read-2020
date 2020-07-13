@@ -1,5 +1,7 @@
 import { NgModule } from "@angular/core";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
+import { ToastrModule } from "ngx-toastr";
 import {
   APP_CONFIG,
   ONTIMIZE_MODULES,
@@ -16,7 +18,21 @@ import { AppRoutingModule } from "./app-routing.module";
 export const customProviders: any = [];
 
 @NgModule({
-  imports: [ONTIMIZE_MODULES, OntimizeWebModule, AppRoutingModule],
+  imports: [
+    ONTIMIZE_MODULES,
+    OntimizeWebModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3500,
+      positionClass: "toast-top-right",
+      preventDuplicates: true,
+      countDuplicates: true,
+      closeButton: true,
+      progressBar: true,
+      progressAnimation: "increasing",
+    }),
+  ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
   providers: [

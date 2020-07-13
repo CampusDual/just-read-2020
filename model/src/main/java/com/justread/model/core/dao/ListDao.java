@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 public class ListDao extends OntimizeJdbcDaoSupport {
 
     public static final String ATTR_ID = "list_id";
-    public static final String ATTR__NAME = "list_name";
+    public static final String ATTR_NAME = "list_name";
     public static final String ATTR_DESCRIPTION = "list_description";
     public static final String ATTR_CREATE_DATE = "list_create_date";
     public static final String USER = "user";
