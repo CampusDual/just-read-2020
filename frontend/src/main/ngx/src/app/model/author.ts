@@ -23,11 +23,13 @@ export interface Authors {
       author_id: number;
       author_first_name: string;
       author_last_name: string;
+      description: string;
     }
   ];
   sqlTypes: {
     book_id: number;
     author_first_name: number;
     author_last_name: number;
+    description: number;
   };
 }
