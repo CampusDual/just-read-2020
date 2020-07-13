@@ -78,10 +78,10 @@
         <div class="card-header">
           <h5 class="card-title">
             Más libros de
-            <span class="font-italic"
+            <a class="font-italic"
+              routerLink="/main/authors/{{author.author_id}}"
               >{{ author.author_first_name }}
-              {{ author.author_last_name }}</span
-            >
+              {{ author.author_last_name }}</a>
           </h5>
         </div>
         <div class="card-body">
@@ -113,7 +113,8 @@
         <div class="card-header">
           <h5 class="card-title">
             Más libros sobre
-            <span class="font-italic">{{ genre.genre_name }}</span>
+            <a class="font-italic" routerLink="/main/genres/{{genre.genre_id}}"
+            >{{ genre.genre_name }}</a>
           </h5>
         </div>
         <div class="card-body">
