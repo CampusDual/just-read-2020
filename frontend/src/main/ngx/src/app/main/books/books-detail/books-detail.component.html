@@ -31,18 +31,21 @@
         <div class="col m-4">
           <h5 class="card-title">{{ book.book_title }}</h5>
           <p class="card-text">
-            Autor:
-            <span
+            Autor:<br />
+            <a
               *ngFor="let authors of authorsResponse.data"
               style="font-style: italic;"
+              routerLink="/main/authors/{{ authors.author_id }}"
               >{{ authors.author_first_name }} {{ authors.author_last_name }}
-            </span>
-            <br />Género:
-            <span
+              <br />
+            </a>
+            Género:<br />
+            <a
               *ngFor="let genre of bookGenres.data"
               style="font-style: italic;"
-              >{{ genre.genre_name }}
-            </span>
+              routerLink="/main/genres/{{ genre.genre_id }}"
+              >{{ genre.genre_name }} <br />
+            </a>
           </p>
           <p class="card-text" id="description">
             {{ book.book_description }}
@@ -60,7 +63,7 @@
       <div *ngIf="!reviews.user_" class="card mx-auto m-3 w-50">
         <div class="card-body">
           <p class="m-1">
-            Este libro aun no tiene ninguna reseña, se el primero en hacerla!
+            Este libro aun no tiene ninguna reseña.
           </p>
         </div>
       </div>

@@ -5,4 +5,7 @@ export const SERVICE_CONFIG: Object = {
   authors: {
     path: "/authors",
   },
+  genres:{
+    path:"/genres"
+  }
 };

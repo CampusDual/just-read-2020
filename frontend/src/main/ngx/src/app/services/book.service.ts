@@ -68,7 +68,7 @@ export class BookService {
             filter: {
                 book_id: id,
             },
-            columns: ["a.author_first_name", "a.author_last_name"],
+            columns: ["a.author_first_name", "a.author_last_name", "a.author_id"],
             sqltypes: {},
         };
 
@@ -85,7 +85,7 @@ export class BookService {
             filter: {
                 book_id: id,
             },
-            columns: ["g.genre_name"],
+            columns: ["g.genre_name","g.genre_id"],
             sqltypes: {},
         };
 
