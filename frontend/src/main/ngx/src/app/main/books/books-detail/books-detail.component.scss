@@ -8,3 +8,33 @@
   white-space: pre-line;
   text-align: start;
 }
+
+#btn{
+  background: #eb94d0;
+  -webkit-border-radius: 20;
+  -moz-border-radius: 15;
+  border-radius: 20px;
+text-shadow: 3px 2px 1px #9daef5;
+  -webkit-box-shadow: 6px 5px 24px #666666;
+  -moz-box-shadow: 6px 5px 24px #666666;
+  box-shadow: 6px 5px 24px #666666;
+font-family: Arial;
+  color: #fafafa;
+  font-size: 12px;
+  padding: 20px;
+  text-decoration: none;
+  background-image: -webkit-linear-gradient(top, #eb94d0, #2079b0);
+  background-image: -moz-linear-gradient(top, #eb94d0, #2079b0);
+  background-image: -ms-linear-gradient(top, #eb94d0, #2079b0);
+  background-image: -o-linear-gradient(top, #eb94d0, #2079b0);
+  background-image: linear-gradient(to bottom, #eb94d0, #2079b0);
+}
+
+#btn:hover{
+  box-shadow: inset 0 0 20px rgba(49, 138, 172, 0.5), 0 0 20px rgba(49, 138, 172, 0.4);
+  outline-color: rgba(49, 138, 172, 0);
+  outline-offset: 80px;
+  text-shadow: 1px 1px 6px #fff;
+  
+
+}
