@@ -25,6 +25,8 @@ export class BooksDetailComponent implements OnInit {
     score: number;
     count: number;
 
+    reviewTextSpoiler = "Esta review es un spoiler, click aquí para verla";
+    
     private routeSub: Subscription;
 
     constructor(
@@ -43,6 +45,12 @@ export class BooksDetailComponent implements OnInit {
 
     ngOnDestroy() {
         this.routeSub.unsubscribe();
+    }
+
+    onClickSpoiler(review: any){
+
+        this.reviewTextSpoiler = review;
+        
     }
 
     loadBook() {

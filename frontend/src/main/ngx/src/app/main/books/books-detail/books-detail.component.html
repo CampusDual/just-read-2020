@@ -93,7 +93,10 @@
               <h5 class="mx-3">{{ reviews.user_ }}</h5>
             </div>
             <div class="col">
-              <p class="px-6 py-2">{{ reviews.review_text }}</p>
+              <p *ngIf="!reviews.is_spoiler;else spoiler" class="px-6 py-2">{{ reviews.review_text }}</p>
+              <ng-template #spoiler>
+                <p (click)="onClickSpoiler(reviews.review_text)" class="px-6 py-2"><b>{{reviewTextSpoiler}}</b></p>
+              </ng-template>
             </div>
           </div>
         </div>
