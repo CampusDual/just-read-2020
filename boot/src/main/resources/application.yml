@@ -30,9 +30,9 @@ ontimize:
           - DELETE
   jdbc:
     # Convención de nombre de columnas
-    nameConvention: upper
+    nameConvention: lower
     # Handler de SQL
-    sqlhandler: oracle
+    sqlhandler: postgres
     sqlConditionProcessor:
       # Uso de mayúsculas
       uppperString: true
