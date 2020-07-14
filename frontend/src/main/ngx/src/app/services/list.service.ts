@@ -6,14 +6,20 @@ import {
 } from "@angular/common/http";
 import { throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
-import { ListResponse, List } from "../model/list";
+import {
+  ListResponse,
+  List,
+  ListBooks,
+  BooksListResponse,
+} from "../model/list";
 import { OUserInfoService } from "ontimize-web-ngx";
 
 @Injectable({
   providedIn: "root",
 })
 export class ListService {
-  private API = "http://localhost:33333/lists/";
+  private API_LISTS = "http://localhost:33333/lists/";
+  private API_LIST_BOOKS = "http://localhost:33333/listbooks/";
 
   constructor(
     private http: HttpClient,
@@ -42,7 +48,7 @@ export class ListService {
     };
 
     return this.http
-      .post<ListResponse>(this.API + "user/search", body, header)
+      .post<ListResponse>(this.API_LISTS + "user/search", body, header)
       .pipe(catchError((error) => this.handleError(error)));
   }
 
@@ -60,7 +66,7 @@ export class ListService {
     };
 
     return this.http
-      .delete(this.API + "list", options)
+      .delete(this.API_LISTS + "list", options)
       .pipe(catchError((error) => this.handleError(error)));
   }
 
@@ -87,7 +93,63 @@ export class ListService {
     };
 
     return this.http
-      .post(this.API + "list", body, header)
+      .post(this.API_LISTS + "list", body, header)
+      .pipe(catchError((error) => this.handleError(error)));
+  }
+
+  addBookToList(data: ListBooks) {
+    const header = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization: "Basic " + localStorage.getItem("token"),
+      }),
+    };
+
+    const body = {
+      data: {
+        list_id: data.list_id,
+        book_id: data.book_id,
+        book_added_to_list_date: new Date(),
+      },
+      sqltypes: {
+        list_id: 4,
+        book_id: 4,
+        book_added_to_list_date: 91,
+      },
+    };
+
+    return this.http
+      .post(this.API_LIST_BOOKS + "listBooks", body, header)
+      .pipe(catchError((error) => this.handleError(error)));
+  }
+
+  getBooksList(id: number) {
+    const header = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization: "Basic " + localStorage.getItem("token"),
+      }),
+    };
+
+    const body = {
+      filter: {
+        list_id: id,
+      },
+      columns: [
+        "l.list_name",
+        "b.book_title",
+        "b.book_thumbnail",
+        "b.book_id",
+        "list_books_id",
+      ],
+    };
+
+    return this.http
+      .post<BooksListResponse>(
+        this.API_LIST_BOOKS + "books/search",
+        body,
+        header
+      )
       .pipe(catchError((error) => this.handleError(error)));
   }
 

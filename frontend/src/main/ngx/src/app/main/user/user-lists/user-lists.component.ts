@@ -12,6 +12,7 @@ export class UserListsComponent implements OnInit {
   lists: ListResponse;
   list_id: number;
   status = false;
+  check: boolean;
   list: List = {
     name: "",
     description: "",
@@ -35,6 +36,12 @@ export class UserListsComponent implements OnInit {
   loadLists() {
     this.listService.getUserLists().subscribe((data) => {
       this.lists = data;
+      if (this.lists.data.length) {
+        this.check = true;
+      } else {
+        this.check = false;
+      }
+      console.log(this.check);
     });
   }
 

@@ -58,7 +58,10 @@
   <div>
     <div class="row">
       <div class="col-2 my-3" *ngFor="let list of lists.data">
-        <div class="card text-left h-100">
+        <div
+          class="card text-left h-100 btn btn-outline-dark p-0"
+          routerLink="/main/user/list/{{ list.list_id }}"
+        >
           <div class="card-body">
             <h4 class="card-title">{{ list.list_name }}</h4>
             <p class="card-text">{{ list.list_description }}</p>
@@ -75,13 +78,6 @@
             </button>
           </div>
         </div>
-      </div>
-    </div>
-    <div *ngIf="lists.data.length == 0" class="card mx-auto m-3 w-50">
-      <div class="card-body">
-        <p class="m-1">
-          ¿Aun no tienes ninguna lista?
-        </p>
       </div>
     </div>
   </div>
@@ -124,5 +120,12 @@
         </button>
       </div>
     </div>
+  </div>
+</div>
+<div *ngIf="!check" class="card mx-auto m-3 w-50 text-center">
+  <div class="card-body">
+    <p class="m-1">
+      ¿Aun no tienes ninguna lista?
+    </p>
   </div>
 </div>
