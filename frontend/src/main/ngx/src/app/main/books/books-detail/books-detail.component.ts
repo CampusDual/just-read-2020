@@ -38,8 +38,6 @@ export class BooksDetailComponent implements OnInit {
     book_id: this.bookId,
   };
 
-  reviewTextSpoiler = "Esta review es un spoiler, click aquí para verla";
-
   private routeSub: Subscription;
 
   constructor(
@@ -63,10 +61,6 @@ export class BooksDetailComponent implements OnInit {
 
   ngOnDestroy() {
     this.routeSub.unsubscribe();
-  }
-
-  onClickSpoiler(review: any) {
-    this.reviewTextSpoiler = review;
   }
 
   loadBook() {
@@ -106,19 +100,22 @@ export class BooksDetailComponent implements OnInit {
         verifyInsert = true;
         this.toastrService.success("Libro guardado correctamente.", "Éxito");
       },
-      (error) =>
-        this.toastrService.warning(
-          "Ya tienes este libro guardado en la lista",
-          "Aviso"
-        )
+      (error) => {
+        if (this.listId == undefined) {
+          this.toastrService.error(
+            "Recuerda que tienes que escoger una lista",
+            "Error!"
+          );
+          verifyInsert = true;
+        }
+        if (!verifyInsert) {
+          this.toastrService.warning(
+            "Ya tienes este libro guardado en la lista",
+            "Aviso"
+          );
+        }
+      }
     );
-    if (this.listId == undefined) {
-      this.toastrService.error(
-        "Recuerda que tienes que escoger una lista",
-        "Error!"
-      );
-      verifyInsert = true;
-    }
   }
 
   getScoreAvgReviews() {

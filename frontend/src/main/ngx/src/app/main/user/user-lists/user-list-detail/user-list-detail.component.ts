@@ -53,5 +53,15 @@ export class UserListDetailComponent implements OnInit {
     this.listsBooksId = id;
   }
 
-  deleteBookFromList() {}
+  deleteBookFromList() {
+    this.listService.deleteBookOfList(this.listsBooksId).subscribe(
+      (data) => {
+        this.toastrService.info("Libro borrado correctamente.");
+        this.loadBooks();
+      },
+      (error) => {
+        this.toastrService.error("No se ha podido borrar el libro.", "Error");
+      }
+    );
+  }
 }

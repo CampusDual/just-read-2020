@@ -23,6 +23,7 @@ export interface BooksListResponse {
   data: [
     {
       list_name: string;
+      list_description: string;
       book_title: string;
       book_thumbnail: string;
       book_id: number;
@@ -32,6 +33,7 @@ export interface BooksListResponse {
   sqlTypes: {
     list_name: number;
     book_title: number;
+    list_description: number;
     book_thumbnail: number;
     book_id: number;
     list_books_id: number;

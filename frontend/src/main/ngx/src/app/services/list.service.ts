@@ -70,6 +70,24 @@ export class ListService {
       .pipe(catchError((error) => this.handleError(error)));
   }
 
+  deleteBookOfList(id: number) {
+    const options = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization: "Basic " + localStorage.getItem("token"),
+      }),
+      body: {
+        filter: {
+          list_books_id: id,
+        },
+      },
+    };
+
+    return this.http
+      .delete(this.API_LIST_BOOKS + "listBooks", options)
+      .pipe(catchError((error) => this.handleError(error)));
+  }
+
   newList(list: List) {
     const header = {
       headers: new HttpHeaders({
@@ -137,6 +155,7 @@ export class ListService {
       },
       columns: [
         "l.list_name",
+        "l.list_description",
         "b.book_title",
         "b.book_thumbnail",
         "b.book_id",
