@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Inject } from "@angular/core";
-import { DataServiceService } from "app/data-service.service";
-import { LoginService } from "ontimize-web-ngx";
+import { LoginService, OUserInfoService } from "ontimize-web-ngx";
 
 @Component({
   selector: "app-main",
@@ -11,18 +10,12 @@ export class MainComponent implements OnInit {
   username: any;
 
   constructor(
-    private data: DataServiceService,
-    @Inject(LoginService) private loginService: LoginService
-  ) {
-    this.username = data.getUsername();
-  }
+    @Inject(LoginService) private loginService: LoginService,
+    @Inject(OUserInfoService) private userInfo: OUserInfoService
+  ) {}
 
   ngOnInit() {
-    this.data.currentMessage.subscribe((message) => (this.username = message));
-  }
-
-  newUsername() {
-    this.data.changeMessage(this.username);
+    this.username = this.userInfo.getUserInfo().username;
   }
 
   closeSession() {
