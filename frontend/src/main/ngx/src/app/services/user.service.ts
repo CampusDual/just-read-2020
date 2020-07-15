@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import {
   HttpClient,
   HttpHeaders,
@@ -6,7 +6,8 @@ import {
 } from "@angular/common/http";
 import { throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
-import { UserResponse } from "../model/user";
+import { User } from "../model/user";
+import { OUserInfoService } from "ontimize-web-ngx";
 
 @Injectable({
   providedIn: "root",
@@ -14,7 +15,10 @@ import { UserResponse } from "../model/user";
 export class UserService {
   private API = "http://localhost:33333/users/";
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    @Inject(OUserInfoService) private userInfo: OUserInfoService
+  ) {}
 
   getUserData() {
     const header = {
@@ -24,8 +28,40 @@ export class UserService {
       }),
     };
 
+    const body = {
+      filter: {
+        USER_: this.userInfo.getUserInfo().username,
+      },
+      columns: ["PICTURE", "NAME", "SURNAME", "USER_", "EMAIL"],
+      sqltypes: {},
+    };
+
     return this.http
-      .get<UserResponse>(this.API + "username", header)
+      .post<User>(this.API + "user/search", body, header)
+      .pipe(catchError((error) => this.handleError(error)));
+  }
+
+  updateUserPicture(img: string) {
+    const header = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization: "Basic " + localStorage.getItem("token"),
+      }),
+    };
+
+    const body = {
+      filter: {
+        user_: this.userInfo.getUserInfo().username,
+      },
+      data: {
+        picture: img,
+      },
+    };
+
+    console.log(body);
+
+    return this.http
+      .put(this.API + "user", body, header)
       .pipe(catchError((error) => this.handleError(error)));
   }
 

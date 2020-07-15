@@ -63,6 +63,16 @@ export interface BookReviewsResponse {
   };
 }
 
+export interface Review {
+  review_text: string;
+  review_last_update: Date;
+  is_spoiler: boolean;
+  picture: string;
+  review_create_date: Date;
+  review_score: number;
+  user_: string;
+}
+
 export interface BookGenresResponse {
   code: number;
   message: string;

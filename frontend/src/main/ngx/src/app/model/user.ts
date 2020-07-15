@@ -1,4 +1,4 @@
-export interface UserResponse {
+export interface UserPrincipalResponse {
   authorities: [
     {
       authority: string;
@@ -35,4 +35,30 @@ export interface UserResponse {
   };
   credentials: any;
   name: string;
+}
+
+export interface User {
+  code: number;
+  message: string;
+  data: [
+    {
+      SURNAME: string;
+      EMAIL: string;
+      PICTURE: string;
+      NAME: string;
+      USER_: string;
+    }
+  ];
+  sqlTypes: {
+    PICTURE: number;
+    name: number;
+    USER_: number;
+    EMAIL: number;
+    picture: number;
+    surname: number;
+    email: number;
+    SURNAME: number;
+    user_: number;
+    NAME: number;
+  };
 }

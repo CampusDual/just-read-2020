@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ListService } from "app/services/list.service";
 import { ListResponse, List } from "app/model/list";
 import { ToastrService } from "ngx-toastr";
+import { Observable, of, BehaviorSubject } from "rxjs";
 
 @Component({
   selector: "app-user-lists",
@@ -12,6 +13,7 @@ export class UserListsComponent implements OnInit {
   lists: ListResponse;
   list_id: number;
   status = false;
+  check = false;
   list: List = {
     name: "",
     description: "",
@@ -35,14 +37,24 @@ export class UserListsComponent implements OnInit {
   loadLists() {
     this.listService.getUserLists().subscribe((data) => {
       this.lists = data;
+      if (this.lists.data.length) {
+        this.check = true;
+      } else {
+        this.check = false;
+      }
     });
   }
 
   deleteList() {
-    this.listService.deleteList(this.list_id).subscribe((data) => {
-      this.ngOnInit();
-      this.toastrService.info("Lista borrada correctamente.");
-    });
+    this.listService.deleteList(this.list_id).subscribe(
+      (data) => {
+        this.toastrService.info("Lista borrada correctamente.");
+        this.loadLists();
+      },
+      (error) => {
+        this.toastrService.error("No se ha podido borrar la lista", "Error");
+      }
+    );
   }
 
   createList() {

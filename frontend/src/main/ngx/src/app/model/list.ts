@@ -17,9 +17,37 @@ export interface ListResponse {
   };
 }
 
+export interface BooksListResponse {
+  code: number;
+  message: string;
+  data: [
+    {
+      list_name: string;
+      list_description: string;
+      book_title: string;
+      book_thumbnail: string;
+      book_id: number;
+      list_books_id: number;
+    }
+  ];
+  sqlTypes: {
+    list_name: number;
+    book_title: number;
+    list_description: number;
+    book_thumbnail: number;
+    book_id: number;
+    list_books_id: number;
+  };
+}
+
 export interface List {
   name: string;
   description: string;
   user: string;
   createDate: Date;
+}
+
+export interface ListBooks {
+  list_id: number;
+  book_id: number;
 }
