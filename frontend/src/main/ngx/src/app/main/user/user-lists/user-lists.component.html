@@ -58,11 +58,16 @@
   <div>
     <div class="row">
       <div class="col-2 my-3" *ngFor="let list of lists.data">
-        <div
-          class="card text-left h-100 btn btn-outline-dark p-0"
-          routerLink="/main/user/list/{{ list.list_id }}"
-        >
-          <div class="card-body">
+        <div class="card h-100">
+          <div
+            class="card-body btn btn-outline-dark text-left"
+            style="
+              border: none;
+              border-bottom-left-radius: 0px;
+              border-bottom-right-radius: 0px;
+            "
+            routerLink="/main/user/list/{{ list.list_id }}"
+          >
             <h4 class="card-title">{{ list.list_name }}</h4>
             <p class="card-text">{{ list.list_description }}</p>
           </div>

@@ -14,6 +14,7 @@ import { BooksListResponse } from "app/model/list";
 })
 export class UserListDetailComponent implements OnInit {
   listId: number;
+  listsBooksId: number;
   books: BooksListResponse;
   private routeSub: Subscription;
 
@@ -47,4 +48,10 @@ export class UserListDetailComponent implements OnInit {
       "data:image/jpg;base64," + image
     );
   }
+
+  saveId(id: number) {
+    this.listsBooksId = id;
+  }
+
+  deleteBookFromList() {}
 }

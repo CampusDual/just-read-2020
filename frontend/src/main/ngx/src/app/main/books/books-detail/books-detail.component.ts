@@ -14,6 +14,7 @@ import {
   BookGenresResponse,
 } from "app/model/book";
 import { ListResponse, ListBooks } from "app/model/list";
+import { delay } from "rxjs/operators";
 
 @Component({
   selector: "app-books-detail",
@@ -100,23 +101,23 @@ export class BooksDetailComponent implements OnInit {
     this.listBook.book_id = this.bookId;
     this.listBook.list_id = this.listId;
 
-    this.listService.addBookToList(this.listBook).subscribe(() => {
-      this.toastrService.success("Libro guardado correctamente.", "Éxito");
-      verifyInsert = true;
-    });
-
+    this.listService.addBookToList(this.listBook).subscribe(
+      () => {
+        verifyInsert = true;
+        this.toastrService.success("Libro guardado correctamente.", "Éxito");
+      },
+      (error) =>
+        this.toastrService.warning(
+          "Ya tienes este libro guardado en la lista",
+          "Aviso"
+        )
+    );
     if (this.listId == undefined) {
       this.toastrService.error(
         "Recuerda que tienes que escoger una lista",
         "Error!"
       );
       verifyInsert = true;
-    }
-    if (!verifyInsert) {
-      this.toastrService.warning(
-        "Ya tienes este libro guardado en la lista",
-        "Aviso"
-      );
     }
   }
 

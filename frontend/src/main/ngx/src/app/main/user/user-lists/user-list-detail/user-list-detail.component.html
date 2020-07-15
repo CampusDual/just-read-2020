@@ -1,18 +1,74 @@
 <div class="container-fluid">
   <div class="row">
-    <div
-      class="col-md-auto card m-2 btn btn-outline-dark"
-      routerLink="/main/books/{{ book.book_id }}"
-      *ngFor="let book of books.data"
-    >
-      <img
-        class="card-img-top mt-2 section-thumbnail"
-        [src]="getImageSrc(book.book_thumbnail)"
-      />
-      <div class="card-body">
-        <div class="card-text section-text text-center">
-          {{ book.book_title }}
+    <div *ngFor="let book of books.data" class="col-2 my-3">
+      <div class="card h-100 p-0">
+        <div
+          class="card-body btn btn-outline-dark"
+          style="
+            border: none;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+          "
+          routerLink="/main/books/{{ book.book_id }}"
+        >
+          <img
+            class="card-img-top mt-1 section-thumbnail mb-3"
+            [src]="getImageSrc(book.book_thumbnail)"
+          />
+          <div class="card-text section-text text-center m-auto">
+            {{ book.book_title }}
+          </div>
         </div>
+        <div class="card-footer text-muted text-right">
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            data-toggle="modal"
+            data-target="#deleteModal"
+            (click)="saveId(book.list_books_id)"
+          >
+            <a class="fa fa-trash"></a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="deleteModal"
+  role="dialog"
+  aria-labelledby="deleteModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header alert alert-danger" role="alert">
+        <h5 class="modal-title" id="deleteModalLabel">Aviso!</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro de que deseas eliminar el libro de la lista?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Cancelar
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="deleteBookFromList()"
+          data-dismiss="modal"
+        >
+          Borrar
+        </button>
       </div>
     </div>
   </div>
