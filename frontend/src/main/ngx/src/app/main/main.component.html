@@ -28,7 +28,7 @@
   <ul class="navbar-nav justify-content-end">
     <li class="nav-item dropleft">
       <a
-        *ngIf="username != ''; else noUsername"
+        *ngIf="username != undefined; else noUsername"
         class="nav-link dropdown-toggle"
         role="button"
         id="navbarDropdownProfileLink"
