@@ -3,6 +3,7 @@ import { ListService } from "app/services/list.service";
 import { ListResponse, List } from "app/model/list";
 import { ToastrService } from "ngx-toastr";
 import { Observable, of, BehaviorSubject } from "rxjs";
+import { renderTemplate } from "@angular/core/src/render3/instructions";
 
 @Component({
   selector: "app-user-lists",
@@ -30,6 +31,10 @@ export class UserListsComponent implements OnInit {
     this.loadLists();
   }
 
+  ngAfterViewInit() {
+    console.log("after view init");
+  }
+
   saveId(id: number) {
     this.list_id = id;
   }
@@ -37,7 +42,7 @@ export class UserListsComponent implements OnInit {
   loadLists() {
     this.listService.getUserLists().subscribe((data) => {
       this.lists = data;
-      if (this.lists.data.length) {
+      if (this.lists.data.length != undefined) {
         this.check = true;
       } else {
         this.check = false;
