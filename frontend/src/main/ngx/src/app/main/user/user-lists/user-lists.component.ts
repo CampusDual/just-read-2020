@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { ListService } from "app/services/list.service";
 import { ListResponse, List } from "app/model/list";
 import { ToastrService } from "ngx-toastr";
-import { Observable, of, BehaviorSubject } from "rxjs";
 
 @Component({
   selector: "app-user-lists",
@@ -37,7 +36,7 @@ export class UserListsComponent implements OnInit {
   loadLists() {
     this.listService.getUserLists().subscribe((data) => {
       this.lists = data;
-      if (this.lists.data.length) {
+      if (this.lists.data.length != undefined) {
         this.check = true;
       } else {
         this.check = false;

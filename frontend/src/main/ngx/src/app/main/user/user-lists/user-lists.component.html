@@ -55,6 +55,15 @@
       </div>
     </ng-template>
   </div>
+  <div *ngIf="!check">
+    <div class="card mx-auto m-3 w-50 text-center">
+      <div class="card-body">
+        <p class="m-3">
+          ¿Aun no tienes ninguna lista?
+        </p>
+      </div>
+    </div>
+  </div>
   <div>
     <div class="row">
       <div class="col-2 my-3" *ngFor="let list of lists.data">
@@ -124,15 +133,6 @@
           Borrar
         </button>
       </div>
-    </div>
-  </div>
-</div>
-<div *ngIf="!check">
-  <div class="card mx-auto m-3 w-50 text-center">
-    <div class="card-body">
-      <p class="m-3">
-        ¿Aun no tienes ninguna lista?
-      </p>
     </div>
   </div>
 </div>
