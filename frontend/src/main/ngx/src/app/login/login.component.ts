@@ -62,6 +62,13 @@ export class LoginComponent implements OnInit {
     this.loginForm.addControl("username", userCtrl);
     this.loginForm.addControl("password", pwdCtrl);
 
+    // cambiar login service el método isLoginIn return true siempre
+
+    // if (this.loginService.isLoggedIn()) {
+    //   this.data.currentMessage.subscribe(message => this.username = message)
+    //   this.router.navigate(['../'], { relativeTo: this.actRoute });
+    // }
+
     this.data.currentMessage.subscribe((message) => (this.username = message));
   }
 
